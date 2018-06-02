@@ -110,7 +110,9 @@ if dein#load_state(s:dein_dir)
 	call dein#add('tpope/vim-rails')
 
 	" Colorscheme
-	call dein#add('flazz/vim-colorschemes')
+	" call dein#add('flazz/vim-colorschemes')
+	" call dein#add('fcevado/molokai_dark')
+	call dein#add('nielsmadan/harlequin')
 
 	" Denite.nvim
 	call dein#add('Shougo/unite.vim')
@@ -144,6 +146,7 @@ if dein#tap('ale')
 
 	let g:ale_swift_swiftlint_executable = 'swiftlint'
 	let g:ale_swift_swiftlint_options = ''
+	let g:syntastic_python_checker_args='--ignore=E501'
 
 	let g:ale_linters = {
 				\   'javascript': ['eslint'],
@@ -205,11 +208,11 @@ endif
 
 " vim-airline
 if dein#tap('vim-airline')
-	let g:airline_theme='dark'
+	let g:airline_theme='distinguished'
 	let g:airline#extensions#tabline#enabled = 1
 	set laststatus=2
 	let g:airline_powerline_fonts = 1
-	let g:airline#extensions#tabline#fnamemod = ':t'
+	" let g:airline#extensions#tabline#fnamemod = ':t'
 endif
 
 " vim-coffee-script
@@ -329,6 +332,9 @@ autocmd InsertLeave *
 " Switch on highlighting the last used search pattern
 set hlsearch
 
+" Search while ignoring case
+set ignorecase
+
 " Encode
 set encoding=utf-8
 
@@ -361,11 +367,10 @@ set noswapfile
 set clipboard+=unnamedplus
 
 " Colorscheme
-colorscheme molokai
+colorscheme harlequin
+" colorscheme molokai_dark
 
 " gui configuration
-highlight Pmenu ctermbg=33 ctermfg=255
-highlight PmenuSel ctermbg=255 ctermfg=0
 highlight Visual term=reverse cterm=reverse guibg=Grey
 
 " }}}
