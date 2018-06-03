@@ -9,7 +9,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export PATH="/usr/local/sbin:$PATH"
 export PATH=~/.local/bin:$PATH
 export PATH="${HOME}/.go/bin:$PATH"
-export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 export PATH="${HOME}/dev/plugins/dotfiles/.tmux/bin:$PATH"
 export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
 export FZF_DEFAULT_OPTS='
@@ -186,12 +185,15 @@ function tmux_automatically_attach_session()
                 tmux list-sessions
                 echo -n "Tmux: attach? (y/N/num/name) "
                 read
-                if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$REPLY" == '' ]]; then
+                if [[ "$REPLY" =~ ^[Yy]$ ]]; then
                     tmux attach-session
                     if [ $? -eq 0 ]; then
                         echo "$(tmux -V) attached session"
                         return 0
                     fi
+                elif [[ "$REPLY" =~ ^[Nn]$ ]] || [[ "$REPLY" == '' ]]; then
+									# Do nothing
+									return 0
                 elif [[ "$REPLY" =~ ^[0-9]+$ ]]; then
                     tmux attach -t "$REPLY"
                     if [ $? -eq 0 ]; then
