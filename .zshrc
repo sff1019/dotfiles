@@ -49,6 +49,7 @@ eval "$(pyenv init -)"
 eval $(gdircolors ~/dev/plugins/dircolors-solarized/dircolors.ansi-dark)
 
 # Set alias
+alias l="ls"
 alias ls="gls --color=auto -l"
 alias c="clear"
 
@@ -57,6 +58,7 @@ alias gs="git status"
 alias gc="git commit -m"
 alias gd="git diff"
 alias gb="git branch"
+alias ga="git add"
 
 alias be='bundle exec'
 alias rs='rails s'
@@ -64,7 +66,9 @@ alias rs='rails s'
 alias -g G='| grep'
 alias vim="nvim"
 alias vi="vim"
-alias ta="tmux a -t"
+
+# tmux shortcuts
+alias ta="tmux a -t" # attach to named
 alias tk="tmux kill-session -t"
 alias tn="tmux new -s"
 alias tl="tmux ls"
