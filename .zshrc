@@ -46,7 +46,8 @@ export NVM_DIR="$HOME/.nvm"
 # Initialize pyenv
 eval "$(pyenv init -)"
 
-eval $(gdircolors ~/dev/plugins/dircolors-solarized/dircolors.ansi-dark)
+# eval $(gdircolors ~/dev/plugins/dircolors-solarized/dircolors.ansi-dark)
+eval $(gdircolors ~/.dir_colors/dircolors.256dark)
 
 # Set alias
 alias l="ls"
