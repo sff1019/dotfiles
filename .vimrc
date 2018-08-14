@@ -125,6 +125,9 @@ if dein#load_state(s:dein_dir)
 	" LATEX
 	call dein#add('lervag/vimtex')
 
+	" OpenCL
+	call dein#add('brgmnn/vim-opencl')
+
 	call dein#end()
 endif
 " }}}
@@ -267,7 +270,9 @@ if dein#tap('vim-markdown')
 endif
 
 if dein#tap('vimtex')
+	let g:vimtex_latexmk_enabled = 1
 	let g:tex_flavor='latex'
+	let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
 	let g:vimtex_compiler_latexmk = {
             \ 'background' : 0,
             \ 'build_dir' : '',
@@ -368,16 +373,11 @@ set clipboard+=unnamedplus
 
 " Colorscheme
 colorscheme harlequin
-" colorscheme molokai_dark
 
 " gui configuration
 highlight Visual term=reverse cterm=reverse guibg=Grey
 
 " }}}
-
-" Go Settings
-exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
-set completeopt=menu,preview
 
 " Check whether plugins should be installed or not
 if has('vim_starting') && dein#check_install()
