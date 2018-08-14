@@ -1,0 +1,6 @@
+davidparsson/zsh-pyenv-lazy
+lukechilds/zsh-nvm
+zsh-users/zsh-history-substring-search
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zsh-users/zsh-syntax-highlighting
