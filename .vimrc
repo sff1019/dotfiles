@@ -110,9 +110,12 @@ if dein#load_state(s:dein_dir)
 	call dein#add('tpope/vim-rails')
 
 	" Colorscheme
-	" call dein#add('flazz/vim-colorschemes')
 	" call dein#add('fcevado/molokai_dark')
 	call dein#add('nielsmadan/harlequin')
+	" call dein#add('morhetz/gruvbox')
+	" call dein#add('w0ng/vim-hybrid')
+	" call dein#add('jonathanfilip/vim-lucius')
+	call dein#add('ajh17/Spacegray.vim')
 
 	" Denite.nvim
 	call dein#add('Shougo/unite.vim')
@@ -127,6 +130,9 @@ if dein#load_state(s:dein_dir)
 
 	" OpenCL
 	call dein#add('brgmnn/vim-opencl')
+
+	" Multiple selection
+	call dein#add('terryma/vim-multiple-cursors')
 
 	call dein#end()
 endif
@@ -236,6 +242,7 @@ if dein#tap('vimfiler.vim')
 	let g:vimfiler_file_icon = '-'
 	let g:vimfiler_readonly_file_icon = '*'
 	let g:vimfiler_marked_file_icon = '√'
+	" let g:vimfiler_ignore_pattern = '^\%(.DS_Store/)$'
 
 	nnoremap <silent> <C-\> :<C-u>VimFilerExplorer -force-hide -split -simple -winwidth=30 -no-quit<CR>
 	autocmd VimEnter * VimFilerExplorer -force-hide -split -simple -winwidth=30 -no-quit
@@ -303,9 +310,34 @@ if dein#tap('vim-trailing-whitespace')
 	endfun
 endif
 
+" vim-multiple-cursors
+if dein#tap('vim-multiple-cursors')
+	let g:multi_cursor_use_default_mapping=0
+
+	" Default mapping
+	let g:multi_cursor_start_word_key      = '<C-m>'
+	let g:multi_cursor_select_all_word_key = '<C-,>'
+	let g:multi_cursor_start_key           = 'g<C-m>'
+	let g:multi_cursor_select_all_key      = 'g<A-m>'
+	let g:multi_cursor_next_key            = '<C-m>'
+	let g:multi_cursor_prev_key            = '<C-p>'
+	let g:multi_cursor_skip_key            = '<C-x>'
+	let g:multi_cursor_quit_key            = '<C-e>'
+endif
+
+" gruvbox (if not using, comment out)
+" let g:gruvbox_italic=0
+
+" pencil (if not using, comment out)
+" let g:pencil_terminal_italics = 0
+
+
 " }}}
 
 " Basic settings {{{
+
+" Neovim/Vim True Color support
+" set termguicolors
 
 " Set statusline
 set laststatus=2
@@ -372,7 +404,14 @@ set noswapfile
 set clipboard+=unnamedplus
 
 " Colorscheme
-colorscheme harlequin
+" colorscheme harlequin
+" colorscheme gruvbox
+" colorscheme hybrid
+" colorscheme lucius
+colorscheme spacegray
+
+" Set background dark
+set background=dark
 
 " gui configuration
 highlight Visual term=reverse cterm=reverse guibg=Grey
