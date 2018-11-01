@@ -10,7 +10,7 @@ if ! type "lolcat" > /dev/null; then
 fi
 
 # Show login text when you login
-LOGIN=$(figlet -f larry3d "Hackit!")
+LOGIN=$(figlet -f larry3d "Eureka!")
 echo $LOGIN | lolcat
 
 # Set Env variables
@@ -34,6 +34,11 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export TMPDIR='/tmp'
 export JAVA_HOME=/Library/Java/Home
 export PATH="$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh:${PATH}"
+# export CC=/usr/local/bin/gcc-5
+# export LD=/usr/local/bin/gcc-5
+export PREFIX="/usr/local/i386elfgcc"
+export TARGET=i386-elf
+export PATH="$PREFIX/bin:$PATH"
 
 # History settings
 export HISTFILE=${HOME}/.zsh_history
@@ -94,6 +99,8 @@ alias tks="tmull kill-server"
 
 alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
 alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
+
+alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew'
 
 # Package installer
 source <(antibody init)
@@ -160,3 +167,4 @@ if [ -f '/Users/hannah/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/han
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/hannah/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/hannah/google-cloud-sdk/completion.zsh.inc'; fi
+
