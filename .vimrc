@@ -83,6 +83,7 @@ if dein#load_state(s:dein_dir)
 	call dein#add('kannokanno/previm')
 	call dein#add('tyru/open-browser.vim')
 	call dein#add('posva/vim-vue')
+	call dein#add('JuliaEditorSupport/julia-vim')
 
   " Statusline
 	call dein#add('vim-airline/vim-airline')
@@ -111,11 +112,15 @@ if dein#load_state(s:dein_dir)
 
 	" Colorscheme
 	" call dein#add('fcevado/molokai_dark')
-	call dein#add('nielsmadan/harlequin')
+	" call dein#add('nielsmadan/harlequin')
 	" call dein#add('morhetz/gruvbox')
 	" call dein#add('w0ng/vim-hybrid')
 	" call dein#add('jonathanfilip/vim-lucius')
-	call dein#add('ajh17/Spacegray.vim')
+	" call dein#add('ajh17/Spacegray.vim')
+	call dein#add('whatyouhide/vim-gotham')
+	" call dein#add('fenetikm/falcon')
+	" call dein#add('sjl/badwolf')
+	" call dein#add('jdsimcoe/panic.vim')
 
 	" Denite.nvim
 	call dein#add('Shougo/unite.vim')
@@ -297,6 +302,9 @@ if dein#tap('vimtex')
 	let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
 
+" vim-julia
+"
+
 " vim-trailing-whitespace
 if dein#tap('vim-trailing-whitespace')
 	" Delete whitespace automatically when current file is saved
@@ -408,7 +416,11 @@ set clipboard+=unnamedplus
 " colorscheme gruvbox
 " colorscheme hybrid
 " colorscheme lucius
-colorscheme spacegray
+" colorscheme spacegray
+colorscheme gotham
+" colorscheme falcon
+" colorscheme badwolf
+" colorscheme panic
 
 " Set background dark
 set background=dark
