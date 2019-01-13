@@ -84,6 +84,8 @@ if dein#load_state(s:dein_dir)
 	call dein#add('tyru/open-browser.vim')
 	call dein#add('posva/vim-vue')
 	call dein#add('JuliaEditorSupport/julia-vim')
+	call dein#add('leafgarland/typescript-vim')
+	call dein#add('peitalin/vim-jsx-typescript')
 
   " Statusline
 	call dein#add('vim-airline/vim-airline')
@@ -111,16 +113,13 @@ if dein#load_state(s:dein_dir)
 	call dein#add('tpope/vim-rails')
 
 	" Colorscheme
-	" call dein#add('fcevado/molokai_dark')
-	" call dein#add('nielsmadan/harlequin')
-	" call dein#add('morhetz/gruvbox')
-	" call dein#add('w0ng/vim-hybrid')
-	" call dein#add('jonathanfilip/vim-lucius')
+	call dein#add('nielsmadan/harlequin')
 	" call dein#add('ajh17/Spacegray.vim')
-	call dein#add('whatyouhide/vim-gotham')
+	" call dein#add('whatyouhide/vim-gotham')
 	" call dein#add('fenetikm/falcon')
 	" call dein#add('sjl/badwolf')
 	" call dein#add('jdsimcoe/panic.vim')
+	" call dein#add('sff1019/vim-joker')
 
 	" Denite.nvim
 	call dein#add('Shougo/unite.vim')
@@ -170,6 +169,7 @@ if dein#tap('ale')
 				\}
 	let g:ale_fixers = {
 				\   'javascript': ['eslint'],
+				\   'python': ['autopep8'],
 				\   'go': ['gofmt'],
 				\}
 	let g:ale_fix_on_save = 1
@@ -411,22 +411,25 @@ set noswapfile
 " Set clipboard
 set clipboard+=unnamedplus
 
-" Colorscheme
-" colorscheme harlequin
-" colorscheme gruvbox
-" colorscheme hybrid
-" colorscheme lucius
-" colorscheme spacegray
-colorscheme gotham
-" colorscheme falcon
-" colorscheme badwolf
-" colorscheme panic
 
 " Set background dark
 set background=dark
 
+" Colorscheme
+colorscheme harlequin
+" colorscheme gruvbox
+" colorscheme hybrid
+" colorscheme lucius
+" colorscheme spacegray
+" colorscheme gotham
+" colorscheme joker
+" colorscheme falcon
+" colorscheme badwolf
+" colorscheme panic
+
 " gui configuration
 highlight Visual term=reverse cterm=reverse guibg=Grey
+
 
 " }}}
 
