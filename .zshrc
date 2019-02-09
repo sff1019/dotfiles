@@ -39,6 +39,7 @@ export PATH="$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh:${PATH}"
 export PREFIX="/usr/local/i386elfgcc"
 export TARGET=i386-elf
 export PATH="$PREFIX/bin:$PATH"
+export C_INCLUDE_PATH=/Users/hannah/.pyenv/versions/3.6.5/include/python3.6m/
 
 # History settings
 export HISTFILE=${HOME}/.zsh_history

@@ -27,6 +27,7 @@ autocmd Filetype css setlocal ts=4 sw=4 sts=0
 autocmd FileType javascript setlocal ts=2 sw=2 et
 autocmd Filetype coffee setlocal ts=2 sts=2 sw=2 et
 autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
+autocmd Filetype typescript setlocal ts=2 sts=2 sw=2 et
 " }}}
 
 " Dein {{{
@@ -70,6 +71,7 @@ if dein#load_state(s:dein_dir)
 
   " Linter
 	call dein#add('w0rp/ale')
+  call dein#add('Quramy/tsuquyomi', {'rev': 'db073bb'})
 
   " Syntax highlight
 	call dein#add('fatih/vim-go')
@@ -84,8 +86,7 @@ if dein#load_state(s:dein_dir)
 	call dein#add('tyru/open-browser.vim')
 	call dein#add('posva/vim-vue')
 	call dein#add('JuliaEditorSupport/julia-vim')
-	call dein#add('leafgarland/typescript-vim')
-	call dein#add('peitalin/vim-jsx-typescript')
+  call dein#add('leafgarland/typescript-vim')
 
   " Statusline
 	call dein#add('vim-airline/vim-airline')
@@ -103,6 +104,7 @@ if dein#load_state(s:dein_dir)
 	call dein#add('vim-scripts/YankRing.vim')
 	call dein#add('rhysd/accelerated-jk')
 	call dein#add('thinca/vim-quickrun')
+  call dein#add('nathanaelkane/vim-indent-guides')
 
 	" Colorization
 	call dein#add('vim-scripts/AnsiEsc.vim')
@@ -113,10 +115,12 @@ if dein#load_state(s:dein_dir)
 	call dein#add('tpope/vim-rails')
 
 	" Colorscheme
-	call dein#add('nielsmadan/harlequin')
+	" call dein#add('nielsmadan/harlequin')
 	" call dein#add('ajh17/Spacegray.vim')
 	" call dein#add('whatyouhide/vim-gotham')
 	" call dein#add('fenetikm/falcon')
+  call dein#add('marciomazza/vim-brogrammer-theme')
+  " call dein#add('znake/znake-vim')
 	" call dein#add('sjl/badwolf')
 	" call dein#add('jdsimcoe/panic.vim')
 	" call dein#add('sff1019/vim-joker')
@@ -125,15 +129,15 @@ if dein#load_state(s:dein_dir)
 	call dein#add('Shougo/unite.vim')
 	call dein#add('ujihisa/unite-colorscheme')
 
-	" FZF
-	call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-	call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+  " FZF
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 
-	" LATEX
-	call dein#add('lervag/vimtex')
+  " LATEX
+  call dein#add('lervag/vimtex')
 
-	" OpenCL
-	call dein#add('brgmnn/vim-opencl')
+  " OpenCL
+  call dein#add('brgmnn/vim-opencl')
 
 	" Multiple selection
 	call dein#add('terryma/vim-multiple-cursors')
@@ -166,6 +170,7 @@ if dein#tap('ale')
 				\   'python': ['flake8'],
 				\   'go': ['gofmt'],
 				\   'swift': ['swiftlint'],
+        \   'typescript': ['tslint'],
 				\}
 	let g:ale_fixers = {
 				\   'javascript': ['eslint'],
@@ -182,13 +187,13 @@ endif
 
 " ctrlp.vim
 if dein#tap('fzf.vim')
-	command! -bang -nargs=* Rg
+    command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number  --no-heading --color=always '.shellescape(<q-args>), 0,
-	\   fzf#vim#with_preview({'options': '--exact --delimiter : --nth 3..'}, 'right:50%'))
-	nnoremap <silent> <C-t> :FZF<CR>
-	nnoremap ,g :Rg<CR>
-endif
+  \   'rg -g "!node_modules/*" --column --line-number  --no-heading --color=always '.shellescape(<q-args>), 0,
+    \   fzf#vim#with_preview({'options': '--exact --delimiter : --nth 3..'}, 'right:50%'))
+    nnoremap <silent> <C-t> :FZF<CR>
+    nnoremap ,g :Rg<CR>
+  endif
 
 " deoplete
 if dein#tap('deoplete.nvim')
@@ -302,9 +307,6 @@ if dein#tap('vimtex')
 	let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
 
-" vim-julia
-"
-
 " vim-trailing-whitespace
 if dein#tap('vim-trailing-whitespace')
 	" Delete whitespace automatically when current file is saved
@@ -331,6 +333,13 @@ if dein#tap('vim-multiple-cursors')
 	let g:multi_cursor_prev_key            = '<C-p>'
 	let g:multi_cursor_skip_key            = '<C-x>'
 	let g:multi_cursor_quit_key            = '<C-e>'
+endif
+
+" tsuquyomi
+if dein#tap('tsuquyomi')
+  autocmd InsertLeave,TextChanged,BufWritePost *.ts,*.tsx call tsuquyomi#asyncGeterr()
+  let g:tsuquyomi_use_vimproc = 0
+  let g:tsuquyomi_disable_quickfix = 1
 endif
 
 " gruvbox (if not using, comment out)
@@ -363,8 +372,10 @@ set ruler
 set incsearch
 
 " Set default indent width
+set softtabstop=2
 set tabstop=2
 set shiftwidth=2
+set expandtab
 
 " Accessing the system clipboard
 set clipboard=unnamed
@@ -415,21 +426,26 @@ set clipboard+=unnamedplus
 " Set background dark
 set background=dark
 
+" let ayucolor="dark"
 " Colorscheme
-colorscheme harlequin
-" colorscheme gruvbox
-" colorscheme hybrid
-" colorscheme lucius
+" colorscheme harlequin
 " colorscheme spacegray
 " colorscheme gotham
 " colorscheme joker
 " colorscheme falcon
-" colorscheme badwolf
-" colorscheme panic
+colorscheme brogrammer
+" colorscheme znake
+" colorscheme iceberg
+
 
 " gui configuration
 highlight Visual term=reverse cterm=reverse guibg=Grey
 
+" brogrammer configuration
+highlight Vertsplit ctermfg=244 ctermbg=234
+highlight LineNr ctermfg=242 ctermbg=234
+highlight GitGutterAdd ctermfg=64 ctermbg=234 guifg=#44800a  guibg=#2f2f2f
+highlight GitGutterChange ctermfg=172 ctermbg=234
 
 " }}}
 
