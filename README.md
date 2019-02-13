@@ -4,4 +4,4 @@ This is my personal dotfile
 
 ## tmux Screenshot
 
-![screenshot](./screenshot/tmux.png)
+![screenshot](./screenshots/tmux.png)
