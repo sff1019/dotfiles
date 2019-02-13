@@ -119,7 +119,7 @@ if dein#load_state(s:dein_dir)
 	" call dein#add('ajh17/Spacegray.vim')
 	" call dein#add('whatyouhide/vim-gotham')
 	" call dein#add('fenetikm/falcon')
-  call dein#add('marciomazza/vim-brogrammer-theme')
+  call dein#add('sff1019/vim-brogrammer-theme')
   " call dein#add('znake/znake-vim')
 	" call dein#add('sjl/badwolf')
 	" call dein#add('jdsimcoe/panic.vim')
@@ -440,12 +440,6 @@ colorscheme brogrammer
 
 " gui configuration
 highlight Visual term=reverse cterm=reverse guibg=Grey
-
-" brogrammer configuration
-highlight Vertsplit ctermfg=244 ctermbg=234
-highlight LineNr ctermfg=242 ctermbg=234
-highlight GitGutterAdd ctermfg=64 ctermbg=234 guifg=#44800a  guibg=#2f2f2f
-highlight GitGutterChange ctermfg=172 ctermbg=234
 
 " }}}
 
