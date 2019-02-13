@@ -1,0 +1,3 @@
+[submodule "tmux-battery"]
+	path = tmux-battery
+	url = https://github.com/tmux-plugins/tmux-battery
