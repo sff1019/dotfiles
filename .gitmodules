@@ -1,3 +1,0 @@
-[submodule ".tmux/plugins/tmux-net-speed"]
-	path = .tmux/plugins/tmux-net-speed
-	url = https://github.com/tmux-plugins/tmux-net-speed
