@@ -33,5 +33,6 @@ if air_info=($(eval "$airport_path" -I | grep -E "^ *(agrCtlRSSI|state|SSID):" |
     "init"    ) airport_="#[fg=colour226]#[bg=colour226, fg=colour0] ... " ;;
     *         ) airport_="#[fg=colour1]#[bg=colour1, fg=colour0] ✗ " ;;
   esac
-  echo "#[bold]#[default]${airport_}"
-  fi
+  ssid="#[bold]#[default]${airport_}"
+  echo $ssid
+fi

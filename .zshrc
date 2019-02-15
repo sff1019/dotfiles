@@ -24,7 +24,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export PATH="/usr/local/sbin:$PATH"
 export PATH=~/.local/bin:$PATH
 export PATH="${HOME}/.go/bin:$PATH"
-export PATH="${HOME}/dev/plugins/dotfiles/.tmux/bin:$PATH"
+export PATH="${HOME}/dev/dotfiles/.tmux/bin:$PATH"
 export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
 export FZF_DEFAULT_OPTS='
 		--color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254

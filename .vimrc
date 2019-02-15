@@ -139,9 +139,6 @@ if dein#load_state(s:dein_dir)
   " OpenCL
   call dein#add('brgmnn/vim-opencl')
 
-	" Multiple selection
-	call dein#add('terryma/vim-multiple-cursors')
-
 	call dein#end()
 endif
 " }}}
@@ -320,21 +317,6 @@ if dein#tap('vim-trailing-whitespace')
 	endfun
 endif
 
-" vim-multiple-cursors
-if dein#tap('vim-multiple-cursors')
-	let g:multi_cursor_use_default_mapping=0
-
-	" Default mapping
-	let g:multi_cursor_start_word_key      = '<C-m>'
-	let g:multi_cursor_select_all_word_key = '<C-,>'
-	let g:multi_cursor_start_key           = 'g<C-m>'
-	let g:multi_cursor_select_all_key      = 'g<A-m>'
-	let g:multi_cursor_next_key            = '<C-m>'
-	let g:multi_cursor_prev_key            = '<C-p>'
-	let g:multi_cursor_skip_key            = '<C-x>'
-	let g:multi_cursor_quit_key            = '<C-e>'
-endif
-
 " tsuquyomi
 if dein#tap('tsuquyomi')
   autocmd InsertLeave,TextChanged,BufWritePost *.ts,*.tsx call tsuquyomi#asyncGeterr()
@@ -440,6 +422,8 @@ colorscheme brogrammer
 
 " gui configuration
 highlight Visual term=reverse cterm=reverse guibg=Grey
+highlight IndentGuidesOdd  ctermbg=240
+highlight IndentGuidesEven ctermbg=238
 
 " }}}
 
