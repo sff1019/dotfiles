@@ -93,7 +93,8 @@ if dein#load_state(s:dein_dir)
 	call dein#add('vim-airline/vim-airline-themes')
 
 	" Filer
-	call dein#add('Shougo/vimfiler.vim', {'depends': 'unite.vim'})
+	" call dein#add('Shougo/vimfiler.vim', {'depends': 'unite.vim'})
+  call dein#add('scrooloose/nerdtree')
 
   " Git
 	call dein#add('airblade/vim-gitgutter')
@@ -139,6 +140,7 @@ if dein#load_state(s:dein_dir)
   " OpenCL
   call dein#add('brgmnn/vim-opencl')
 
+  call dein#add('ryanoasis/vim-devicons')
 	call dein#end()
 endif
 " }}}
@@ -228,7 +230,6 @@ if dein#tap('vim-airline')
 	let g:airline#extensions#tabline#enabled = 1
 	set laststatus=2
 	let g:airline_powerline_fonts = 1
-	" let g:airline#extensions#tabline#fnamemod = ':t'
 endif
 
 " vim-coffee-script
@@ -237,27 +238,44 @@ if dein#tap('vim-coffee-script')
 	nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
 endif
 
-" vimfiler
-if dein#tap('vimfiler.vim')
-	let g:vimfiler_as_default_explorer = 1
-	let g:vimfiler_restore_alternate_file = 1
-	let g:vimfiler_safe_mode_by_default=0
-	let g:vimfiler_tree_indentation = 1
-	let g:vimfiler_tree_leaf_icon = '¦'
-	let g:vimfiler_tree_opened_icon = '▼'
-	let g:vimfiler_tree_closed_icon = '▷'
-	let g:vimfiler_file_icon = '-'
-	let g:vimfiler_readonly_file_icon = '*'
-	let g:vimfiler_marked_file_icon = '√'
-	" let g:vimfiler_ignore_pattern = '^\%(.DS_Store/)$'
+" nerdtree
+if dein#tap('nerdtree')
+  map <C-\> :NERDTreeToggle<CR>
+  let NERDTreeQuitOnOpen = 1
+  let NERDTreeAutoDeleteBuffer = 1
+  let NERDTreeMinimalUI = 1
 
-	nnoremap <silent> <C-\> :<C-u>VimFilerExplorer -force-hide -split -simple -winwidth=30 -no-quit<CR>
-	autocmd VimEnter * VimFilerExplorer -force-hide -split -simple -winwidth=30 -no-quit
-	autocmd FileType vimfiler call s:vimfilerinit()
-	function! s:vimfilerinit()
-		set nonumber
-	endfunction
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+  let NERDTreeIgnore=['\.DS_Store$']
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:NERDTreeDirArrowExpandable = '▸'
+  let g:NERDTreeDirArrowCollapsible = '▾'
+
 endif
+
+" vimfiler
+" if dein#tap('vimfiler.vim')
+" 	let g:vimfiler_as_default_explorer = 1
+" 	let g:vimfiler_restore_alternate_file = 1
+" 	let g:vimfiler_safe_mode_by_default=0
+" 	let g:vimfiler_tree_indentation = 1
+" 	let g:vimfiler_tree_leaf_icon = ''
+" 	let g:vimfiler_tree_opened_icon = ''
+" 	let g:vimfiler_tree_closed_icon = ''
+" 	" let g:vimfiler_file_icon = ''
+" 	let g:vimfiler_readonly_file_icon = ''
+" 	let g:vimfiler_marked_file_icon = ''
+" 	" let g:vimfiler_ignore_pattern = '^\%(.DS_Store/)$'
+"
+" 	nnoremap <silent> <C-\> :<C-u>VimFilerExplorer -force-hide -split -no-simple -winwidth=30 -no-quit<CR>
+" 	autocmd VimEnter * VimFilerExplorer -force-hide -split -no-simple -winwidth=30 -no-quit
+" 	autocmd FileType vimfiler call s:vimfilerinit()
+" 	function! s:vimfilerinit()
+" 		set nonumber
+" 	endfunction
+" endif
 
 if dein#tap('vim-go')
 	let g:go_def_mapping_enabled = 0
@@ -324,23 +342,15 @@ if dein#tap('tsuquyomi')
   let g:tsuquyomi_disable_quickfix = 1
 endif
 
-" gruvbox (if not using, comment out)
-" let g:gruvbox_italic=0
-
-" pencil (if not using, comment out)
-" let g:pencil_terminal_italics = 0
-
 
 " }}}
 
 " Basic settings {{{
 
-" Neovim/Vim True Color support
-" set termguicolors
-
 " Set statusline
 set laststatus=2
 
+set guifont=Roboto_Mono_Nerd_Fonot_Complete:h12
 " Display line number
 set nu
 
@@ -374,7 +384,7 @@ set hlsearch
 set ignorecase
 
 " Encode
-set encoding=utf-8
+set encoding=UTF-8
 
 " Fastest way to move buffer
 nnoremap <silent><Left> :bp<CR>
@@ -416,8 +426,6 @@ set background=dark
 " colorscheme joker
 " colorscheme falcon
 colorscheme brogrammer
-" colorscheme znake
-" colorscheme iceberg
 
 
 " gui configuration
