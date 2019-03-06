@@ -93,8 +93,9 @@ if dein#load_state(s:dein_dir)
 	call dein#add('vim-airline/vim-airline-themes')
 
 	" Filer
-	" call dein#add('Shougo/vimfiler.vim', {'depends': 'unite.vim'})
   call dein#add('scrooloose/nerdtree')
+  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+  call dein#add('flw-cn/vim-nerdtree-l-open-h-close')
 
   " Git
 	call dein#add('airblade/vim-gitgutter')
@@ -121,7 +122,6 @@ if dein#load_state(s:dein_dir)
 	" call dein#add('whatyouhide/vim-gotham')
 	" call dein#add('fenetikm/falcon')
   call dein#add('sff1019/vim-brogrammer-theme')
-  " call dein#add('znake/znake-vim')
 	" call dein#add('sjl/badwolf')
 	" call dein#add('jdsimcoe/panic.vim')
 	" call dein#add('sff1019/vim-joker')
@@ -156,10 +156,6 @@ filetype plugin indent on
 
 " ale
 if dein#tap('ale')
-	" let g:ale_python_flake8_executable = 'python2'
-	" let g:ale_python_flake8_args = '-m flake8'
-  " let g:ale_python_flake8_use_global = 0
-
 	let g:ale_swift_swiftlint_executable = 'swiftlint'
 	let g:ale_swift_swiftlint_options = ''
 	let g:syntastic_python_checker_args='--ignore=E501'
@@ -228,8 +224,14 @@ endif
 if dein#tap('vim-airline')
 	let g:airline_theme='distinguished'
 	let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#formatter = 'default'
 	set laststatus=2
 	let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#tabline#left_sep = '  '
+  let g:airline#extensions#tabline#left_alt_sep = ' '
+  let g:airline_left_sep = ' '
+  let g:airline_right_sep = ' '
 endif
 
 " vim-coffee-script
@@ -238,44 +240,31 @@ if dein#tap('vim-coffee-script')
 	nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
 endif
 
-" nerdtree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if dein#tap('nerdtree')
   map <C-\> :NERDTreeToggle<CR>
+
   let NERDTreeQuitOnOpen = 1
   let NERDTreeAutoDeleteBuffer = 1
   let NERDTreeMinimalUI = 1
+  let NERDTreeShowHidden=1
+  let g:NERDTreeHighlightCursorline = 0
 
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-  let NERDTreeIgnore=['\.DS_Store$']
+  let NERDTreeIgnore                      =
+            \ ['\.idea', '\.iml', '\.pyc', '\~$', '\.swo$', '\.git', '\.hg', '\.svn', '\.bzr', '\.DS_Store', 'tmp', 'gin-bin']
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
   let g:NERDTreeDirArrowExpandable = '▸'
   let g:NERDTreeDirArrowCollapsible = '▾'
 
-endif
+  let g:NERDTreeGitStatusNodeColorization = 1
 
-" vimfiler
-" if dein#tap('vimfiler.vim')
-" 	let g:vimfiler_as_default_explorer = 1
-" 	let g:vimfiler_restore_alternate_file = 1
-" 	let g:vimfiler_safe_mode_by_default=0
-" 	let g:vimfiler_tree_indentation = 1
-" 	let g:vimfiler_tree_leaf_icon = ''
-" 	let g:vimfiler_tree_opened_icon = ''
-" 	let g:vimfiler_tree_closed_icon = ''
-" 	" let g:vimfiler_file_icon = ''
-" 	let g:vimfiler_readonly_file_icon = ''
-" 	let g:vimfiler_marked_file_icon = ''
-" 	" let g:vimfiler_ignore_pattern = '^\%(.DS_Store/)$'
-"
-" 	nnoremap <silent> <C-\> :<C-u>VimFilerExplorer -force-hide -split -no-simple -winwidth=30 -no-quit<CR>
-" 	autocmd VimEnter * VimFilerExplorer -force-hide -split -no-simple -winwidth=30 -no-quit
-" 	autocmd FileType vimfiler call s:vimfilerinit()
-" 	function! s:vimfilerinit()
-" 		set nonumber
-" 	endfunction
-" endif
+  source ~/dev/dotfiles/.vimrc_icons
+endif
 
 if dein#tap('vim-go')
 	let g:go_def_mapping_enabled = 0
@@ -342,7 +331,6 @@ if dein#tap('tsuquyomi')
   let g:tsuquyomi_disable_quickfix = 1
 endif
 
-
 " }}}
 
 " Basic settings {{{
@@ -350,7 +338,7 @@ endif
 " Set statusline
 set laststatus=2
 
-set guifont=Roboto_Mono_Nerd_Fonot_Complete:h12
+
 " Display line number
 set nu
 
@@ -426,7 +414,6 @@ set background=dark
 " colorscheme joker
 " colorscheme falcon
 colorscheme brogrammer
-
 
 " gui configuration
 highlight Visual term=reverse cterm=reverse guibg=Grey
