@@ -1,0 +1,33 @@
+#!/bin/sh
+
+command_exists() {
+	local command="$1"
+	command -v "$command" &> /dev/null
+}
+
+percentage=""
+cpu=""
+
+get_cpu_percentage() {
+  if command_exists "iostat"; then
+    if [ $(uname) == "Darwin" ]; then
+      percentage=$(iostat -c 2 disk0 | sed '/^\s*$/d' | tail -n 1 | awk '{usage=100-$6} END {printf("%3.1f", usage)}' | sed 's/,/./')
+    else
+      echo "Not a mac shell, checkout git/tmux-cpu"
+    fi
+  fi
+}
+
+print_cpu_percentage() {
+  if [[ $percentage -ge 80 ]]; then
+    cpu="#[fg=colour9]   ${percentage} %"
+  elif [[ $percentage -ge 30 ]] && [[ $percentage -lt 80 ]]; then
+    cpu="#[fg=colour214]   ${percentage} %"
+  else
+    cpu="#[fg=colour36]   ${percentage} %"
+  fi
+}
+
+get_cpu_percentage
+print_cpu_percentage
+echo $cpu
