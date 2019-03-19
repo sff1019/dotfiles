@@ -20,3 +20,4 @@ if [ -f '/Users/hannah/google-cloud-sdk/path.bash.inc' ]; then source '/Users/ha
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/hannah/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/hannah/google-cloud-sdk/completion.bash.inc'; fi
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
