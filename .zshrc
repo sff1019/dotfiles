@@ -36,8 +36,7 @@ export JAVA_HOME=/Library/Java/Home
 export PATH="$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh:${PATH}"
 # export CC=/usr/local/bin/gcc-5
 # export LD=/usr/local/bin/gcc-5
-export PREFIX="/usr/local/i386elfgcc"
-export TARGET=i386-elf
+export PREFIX=${HOME}/.local
 export PATH="$PREFIX/bin:$PATH"
 export C_INCLUDE_PATH=/Users/hannah/.pyenv/versions/3.6.5/include/python3.6m/
 
@@ -58,13 +57,6 @@ setopt extended_glob
 # Use viins keymaps
 bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
-
-# Initialize rbenv
-eval "$(rbenv init -)"
-
-# Inisialize nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Initialize pyenv
 eval "$(pyenv init -)"
@@ -163,9 +155,10 @@ if [ -n "$LS_COLORS" ]; then
   zstyle ':completion:*' list-colors menu select ${(s.:.)LS_COLORS}
 fi
 
+export PATH="/usr/local/opt/ncurses/bin:$PATH"
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/hannah/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/hannah/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/hanna/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/hanna/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/hannah/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/hannah/google-cloud-sdk/completion.zsh.inc'; fi
-
+if [ -f '/Users/hanna/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hanna/google-cloud-sdk/completion.zsh.inc'; fi
