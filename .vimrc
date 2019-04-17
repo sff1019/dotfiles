@@ -1,8 +1,8 @@
 " vimrc
-
-" Only for nvim
+"
+" " Only for nvim
 if !has('nvim')
-	set ttymouse=xterm2
+  set ttymouse=xterm2
 endif
 
 "set nowrap
@@ -50,85 +50,90 @@ endif
 let &runtimepath = &runtimepath . "," . s:dein_repo_dir
 
 if dein#load_state(s:dein_dir)
-	call dein#begin(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-	call dein#add('Shougo/dein.vim')
+  call dein#add('Shougo/dein.vim')
 
   " Plugin async loader
-	call dein#add('Shougo/vimproc.vim', {
-		\ 'build' : {
-		\     'windows' : 'tools\\update-dll-mingw',
-		\     'cygwin' : 'make -f make_cygwin.mak',
-		\     'mac' : 'make -f make_mac.mak',
-		\     'unix' : 'make -f make_unix.mak',
-		\    },
-		\ })
+  call dein#add('Shougo/vimproc.vim', {
+        \ 'build' : {
+        \     'windows' : 'tools\\update-dll-mingw',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make -f make_mac.mak',
+        \     'unix' : 'make -f make_unix.mak',
+        \    },
+        \ })
 
   " Completion
-	call dein#add('Shougo/deoplete.nvim')
-	call dein#add('zchee/deoplete-jedi')
-	call dein#add('jiangmiao/auto-pairs')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('zchee/deoplete-jedi')
+  call dein#add('jiangmiao/auto-pairs')
 
   " Linter
-	call dein#add('w0rp/ale')
+  call dein#add('w0rp/ale')
   call dein#add('Quramy/tsuquyomi', {'rev': 'db073bb'})
+  call dein#add('posva/vim-vue')
 
   " Syntax highlight
-	call dein#add('fatih/vim-go')
-	call dein#add('keith/swift.vim')
-	call dein#add('pangloss/vim-javascript')
-	call dein#add('mxw/vim-jsx')
-	call dein#add('maxmellon/vim-jsx-pretty')
-	call dein#add('wlangstroth/vim-racket')
-	call dein#add('godlygeek/tabular')
-	call dein#add('rcmdnk/vim-markdown')
-	call dein#add('kannokanno/previm')
-	call dein#add('tyru/open-browser.vim')
-	call dein#add('posva/vim-vue')
-	call dein#add('JuliaEditorSupport/julia-vim')
+  call dein#add('fatih/vim-go')
+  call dein#add('keith/swift.vim')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('mxw/vim-jsx')
+  call dein#add('maxmellon/vim-jsx-pretty')
+  call dein#add('wlangstroth/vim-racket')
+  call dein#add('godlygeek/tabular')
+  call dein#add('rcmdnk/vim-markdown')
+  call dein#add('kannokanno/previm')
+  call dein#add('tyru/open-browser.vim')
+  call dein#add('posva/vim-vue')
+  call dein#add('JuliaEditorSupport/julia-vim')
   call dein#add('leafgarland/typescript-vim')
+  call dein#add('octol/vim-cpp-enhanced-highlight')
 
   " Statusline
-	call dein#add('vim-airline/vim-airline')
-	call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
 
-	" Filer
+  " Filer
   call dein#add('scrooloose/nerdtree')
   call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
   call dein#add('flw-cn/vim-nerdtree-l-open-h-close')
 
   " Git
-	call dein#add('airblade/vim-gitgutter')
-	call dein#add('tpope/vim-fugitive')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('tpope/vim-fugitive')
 
   " Util
-	call dein#add('tomtom/tcomment_vim')
-	call dein#add('vim-scripts/YankRing.vim')
-	call dein#add('rhysd/accelerated-jk')
-	call dein#add('thinca/vim-quickrun')
+  call dein#add('tomtom/tcomment_vim')
+  call dein#add('vim-scripts/YankRing.vim')
+  call dein#add('rhysd/accelerated-jk')
+  call dein#add('thinca/vim-quickrun')
   call dein#add('nathanaelkane/vim-indent-guides')
 
-	" Colorization
-	call dein#add('vim-scripts/AnsiEsc.vim')
-	call dein#add('bronson/vim-trailing-whitespace')
-	call dein#add('chrisbra/Colorizer')
+  " Colorization
+  call dein#add('vim-scripts/AnsiEsc.vim')
+  call dein#add('bronson/vim-trailing-whitespace')
+  call dein#add('chrisbra/Colorizer')
 
-	" Rails
-	call dein#add('tpope/vim-rails')
+  " Rails
+  call dein#add('tpope/vim-rails')
 
-	" Colorscheme
-	" call dein#add('nielsmadan/harlequin')
-	" call dein#add('ajh17/Spacegray.vim')
-	" call dein#add('whatyouhide/vim-gotham')
-	" call dein#add('fenetikm/falcon')
+  " Xterm Color
+  call dein#add('guns/xterm-color-table.vim')
+
+  " Colorscheme
+  " call dein#add('nielsmadan/harlequin')
+  " call dein#add('ajh17/Spacegray.vim')
+  " call dein#add('whatyouhide/vim-gotham')
+  " call dein#add('fenetikm/falcon')
   call dein#add('sff1019/vim-brogrammer-theme')
-	" call dein#add('sjl/badwolf')
-	" call dein#add('jdsimcoe/panic.vim')
-	" call dein#add('sff1019/vim-joker')
+  " call dein#add('sjl/badwolf')
+  " call dein#add('jdsimcoe/panic.vim')
+  " call dein#add('sff1019/vim-joker')
 
-	" Denite.nvim
-	call dein#add('Shougo/unite.vim')
-	call dein#add('ujihisa/unite-colorscheme')
+  " Denite.nvim
+  call dein#add('Shougo/unite.vim')
+  call dein#add('ujihisa/unite-colorscheme')
 
   " FZF
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
@@ -141,7 +146,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('brgmnn/vim-opencl')
 
   call dein#add('ryanoasis/vim-devicons')
-	call dein#end()
+  call dein#end()
 endif
 " }}}
 
@@ -156,77 +161,77 @@ filetype plugin indent on
 
 " ale
 if dein#tap('ale')
-	let g:ale_swift_swiftlint_executable = 'swiftlint'
-	let g:ale_swift_swiftlint_options = ''
-	let g:syntastic_python_checker_args='--ignore=E501'
+  let g:ale_swift_swiftlint_executable = 'swiftlint'
+  let g:ale_swift_swiftlint_options = ''
+  let g:syntastic_python_checker_args='--ignore=E501'
 
-	let g:ale_linters = {
-				\   'javascript': ['eslint'],
-				\   'python': ['flake8'],
-				\   'go': ['gofmt'],
-				\   'swift': ['swiftlint'],
+  let g:ale_linters = {
+        \   'javascript': ['eslint'],
+        \   'python': ['flake8'],
+        \   'go': ['gofmt'],
+        \   'swift': ['swiftlint'],
         \   'typescript': ['tslint'],
-				\}
-	let g:ale_fixers = {
-				\   'javascript': ['eslint'],
-				\   'python': ['autopep8'],
-				\   'go': ['gofmt'],
-				\}
-	let g:ale_fix_on_save = 1
+        \}
+  let g:ale_fixers = {
+        \   'javascript': ['eslint'],
+        \   'python': ['autopep8'],
+        \   'go': ['gofmt'],
+        \}
+  let g:ale_fix_on_save = 1
 endif
 
 "Colorizer
 if dein#tap('Colorizer')
-	autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
+  autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
 endif
 
 " ctrlp.vim
 if dein#tap('fzf.vim')
-    command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg -g "!node_modules/*" --column --line-number  --no-heading --color=always '.shellescape(<q-args>), 0,
-    \   fzf#vim#with_preview({'options': '--exact --delimiter : --nth 3..'}, 'right:50%'))
-    nnoremap <silent> <C-t> :FZF<CR>
-    nnoremap ,g :Rg<CR>
-  endif
+  command! -bang -nargs=* Rg
+        \ call fzf#vim#grep(
+        \   'rg -g "!node_modules/*" --column --line-number  --no-heading --color=always '.shellescape(<q-args>), 0,
+        \   fzf#vim#with_preview({'options': '--exact --delimiter : --nth 3..'}, 'right:50%'))
+  nnoremap <silent> <C-t> :FZF<CR>
+  nnoremap ,g :Rg<CR>
+endif
 
 " deoplete
 if dein#tap('deoplete.nvim')
-	let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
-	let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
-	let g:deoplete#enable_at_startup = 1
-	if !exists('g:deoplete#omni#input_patterns')
-		let g:deoplete#omni#input_patterns = {}
-	endif
-	let g:deoplete#auto_complete_delay = 0
+  let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
+  let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
+  let g:deoplete#enable_at_startup = 1
+  if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+  endif
+  let g:deoplete#auto_complete_delay = 0
   let g:deoplete#auto_complete_start_length = 1
-	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
 
 " neoterm
 if dein#tap('neoterm')
-	let g:neoterm_size = 80
-	let g:neoterm_position = 'vertical'
+  let g:neoterm_size = 80
+  let g:neoterm_position = 'vertical'
 endif
 
 " previm
 if dein#tap('previm')
-	let g:previm_open_cmd = 'open -a Google\ Chrome'
+  let g:previm_open_cmd = 'open -a Google\ Chrome'
 endif
 
 
 " quickrun
 if dein#tap('quickrun')
-	let g:quickrun_config = {}
+  let g:quickrun_config = {}
 endif
 
 " vim-airline
 if dein#tap('vim-airline')
-	let g:airline_theme='distinguished'
-	let g:airline#extensions#tabline#enabled = 1
+  let g:airline_theme='distinguished'
+  let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#formatter = 'default'
-	set laststatus=2
-	let g:airline_powerline_fonts = 1
+  set laststatus=2
+  let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#left_sep = '  '
   let g:airline#extensions#tabline#left_alt_sep = ' '
@@ -236,8 +241,8 @@ endif
 
 " vim-coffee-script
 if dein#tap('vim-coffee-script')
-	autocmd QuickFixCmdPost * nested cwindow | redraw!
-	nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
+  autocmd QuickFixCmdPost * nested cwindow | redraw!
+  nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -256,7 +261,7 @@ if dein#tap('nerdtree')
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
   let NERDTreeIgnore                      =
-            \ ['\.idea', '\.iml', '\.pyc', '\~$', '\.swo$', '\.git', '\.hg', '\.svn', '\.bzr', '\.DS_Store', 'tmp', 'gin-bin']
+        \ ['\.idea', '\.iml', '\.pyc', '\~$', '\.swo$', '\.git', '\.hg', '\.svn', '\.bzr', '\.DS_Store', 'tmp', 'gin-bin']
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
   let g:NERDTreeDirArrowExpandable = '▸'
   let g:NERDTreeDirArrowCollapsible = '▾'
@@ -267,61 +272,61 @@ if dein#tap('nerdtree')
 endif
 
 if dein#tap('vim-go')
-	let g:go_def_mapping_enabled = 0
+  let g:go_def_mapping_enabled = 0
 endif
 
 " vim-javascript
 if dein#tap('vim-javascript')
-	let g:javascript_plugin_jsdoc = 1
+  let g:javascript_plugin_jsdoc = 1
 endif
 
 "vim-jsx-pretty
 if dein#tap('vim-jsx-pretty')
-	let g:vim_jsx_pretty_colorful_config = 1
+  let g:vim_jsx_pretty_colorful_config = 1
 endif
 
 "vim-jsx-pretty
 if dein#tap('vim-jsx')
-	let g:jsx_ext_required = 0
+  let g:jsx_ext_required = 0
 endif
 
 " vim-markdown
 if dein#tap('vim-markdown')
-	let g:vim_markdown_folding_disabled = 1
+  let g:vim_markdown_folding_disabled = 1
 endif
 
 if dein#tap('vimtex')
-	let g:vimtex_latexmk_enabled = 1
-	let g:tex_flavor='latex'
-	let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
-	let g:vimtex_compiler_latexmk = {
-            \ 'background' : 0,
-            \ 'build_dir' : '',
-            \ 'continuous' : 1,
-            \ 'options' : [
-            \   '-pdfdvi',
-            \   '-verbose',
-            \   '-file-line-error',
-            \   '-synctex=1',
-            \   '-interaction=nonstopmode',
-            \ ],
-            \}
-	let g:tex_conceal = ''
-	let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-	let g:vimtex_view_general_options = '@line @pdf @tex'
+  let g:vimtex_latexmk_enabled = 1
+  let g:tex_flavor='latex'
+  let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
+  let g:vimtex_compiler_latexmk = {
+        \ 'background' : 0,
+        \ 'build_dir' : '',
+        \ 'continuous' : 1,
+        \ 'options' : [
+        \   '-pdfdvi',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+  let g:tex_conceal = ''
+  let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+  let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
 
 " vim-trailing-whitespace
 if dein#tap('vim-trailing-whitespace')
-	" Delete whitespace automatically when current file is saved
-	autocmd BufWritePre *  call s:StripTrailingWhitespace()
-	fun! s:StripTrailingWhitespace()
-		" Only strip if the b:noStripeWhitespace variable isn't set
-		if exists('b:noStripWhitespace')
-			return
-		endif
-		:FixWhitespace
-	endfun
+  " Delete whitespace automatically when current file is saved
+  autocmd BufWritePre *  call s:StripTrailingWhitespace()
+  fun! s:StripTrailingWhitespace()
+    " Only strip if the b:noStripeWhitespace variable isn't set
+    if exists('b:noStripWhitespace')
+      return
+    endif
+    :FixWhitespace
+  endfun
 endif
 
 " tsuquyomi
@@ -363,7 +368,7 @@ set clipboard=unnamed
 " Avoid automatic indentation
 autocmd InsertLeave *
       \ if &paste | set nopaste mouse=a | echo 'nopaste' | endif |
-      \ if &l:diff | diffupdate | endif
+    \ if &l:diff | diffupdate | endif
 
 " Switch on highlighting the last used search pattern
 set hlsearch
@@ -380,17 +385,17 @@ nnoremap <silent><Right> :bn<CR>
 nnoremap <silent><C-Space> :call BufferDeleteExceptFiler()<CR>
 
 function! BufferDeleteExceptFiler()
-	if (&filetype !=# 'vimfiler')
-		bd!
-	endif
+  if (&filetype !=# 'vimfiler')
+    bd!
+  endif
 endfunction
 
 if !has('gui_running')
-	augroup term_vim_c_space
-		autocmd!
-		autocmd VimEnter * map <Nul> <C-Space>
-		autocmd VimEnter * map! <Nul> <C-Space>
-	augroup END
+  augroup term_vim_c_space
+    autocmd!
+    autocmd VimEnter * map <Nul> <C-Space>
+    autocmd VimEnter * map! <Nul> <C-Space>
+  augroup END
 endif
 
 " Display another buffer when current buffer isn't saved.
@@ -404,6 +409,7 @@ set clipboard+=unnamedplus
 
 
 " Set background dark
+" set background=light
 set background=dark
 
 " let ayucolor="dark"
@@ -414,11 +420,20 @@ set background=dark
 " colorscheme joker
 " colorscheme falcon
 colorscheme brogrammer
+" colorscheme solarized
+" colorscheme molokai
 
 " gui configuration
 highlight Visual term=reverse cterm=reverse guibg=Grey
 highlight IndentGuidesOdd  ctermbg=240
 highlight IndentGuidesEven ctermbg=238
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Show highlight group under cursor
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ nnoremap <silent> <C-k> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+ \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+ \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
 
 " }}}
 
