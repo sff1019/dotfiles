@@ -268,7 +268,7 @@ if dein#tap('nerdtree')
 
   let g:NERDTreeGitStatusNodeColorization = 1
 
-  source ~/dev/dotfiles/.vimrc_icons
+  source ~/dev/dotfiles/vim_modules/.vimrc_icons
 endif
 
 if dein#tap('vim-go')
@@ -409,10 +409,8 @@ set clipboard+=unnamedplus
 
 
 " Set background dark
-" set background=light
 set background=dark
 
-" let ayucolor="dark"
 " Colorscheme
 " colorscheme harlequin
 " colorscheme spacegray
@@ -431,9 +429,7 @@ highlight IndentGuidesEven ctermbg=238
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Show highlight group under cursor
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
- nnoremap <silent> <C-k> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
- \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
- \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
+source ~/dev/dotfiles/vim_modules/.vimrc_highlight_groups
 
 " }}}
 
