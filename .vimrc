@@ -39,7 +39,7 @@ highlight IndentGuidesEven ctermbg=238
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Show highlight group under cursor
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-source ~/dev/dotfiles/vim_modules/.vimrc_highlight_groups
+source ~/dev/dotfiles/vim_modules/.vimrc_syntax_info
 
 " }}}
 
