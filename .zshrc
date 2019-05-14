@@ -37,6 +37,8 @@ export PATH="$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh:${PATH}"
 export PREFIX=${HOME}/.local
 export PATH="$PREFIX/bin:$PATH"
 export C_INCLUDE_PATH=/Users/hannah/.pyenv/versions/3.6.5/include/python3.6m/
+export PATH=/Developer/NVIDIA/CUDA-10.1/bin:$PATH
+export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.5/lib:$DYLD_LIBRARY_PATH
 
 # History settings
 export HISTFILE=${HOME}/.zsh_history
