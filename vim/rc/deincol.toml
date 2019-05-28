@@ -1,0 +1,48 @@
+# colorschemes --------------------------------------------
+[[plugins]]
+repo = 'sff1019/vim-brogrammer-theme'
+hook_add = '''
+    set background=dark
+'''
+
+[[plugins]]
+repo = 'nielsmadan/harlequin'
+# hook_add = '''
+#     set background=dark
+#     au MyAutoCmd VimEnter * nested colorscheme harlequin
+# '''
+
+[[plugins]]
+repo = 'ajh17/Spacegray.vim'
+# hook_add = '''
+#     set background=dark
+#     au MyAutoCmd VimEnter * nested colorscheme spacegray
+# '''
+
+[[plugins]]
+repo = 'whatyouhide/vim-gotham'
+# hook_add = '''
+#     set background=dark
+#     au MyAutoCmd VimEnter * nested colorscheme gotham
+# '''am'
+
+[[plugins]]
+repo = 'fenetikm/falcon'
+# hook_add = '''
+#     set background=dark
+#     au MyAutoCmd VimEnter * nested colorscheme falcon
+# '''
+
+[[plugins]]
+repo = 'sff1019/vim-joker'
+# hook_add = '''
+#     set background=dark
+#     au MyAutoCmd VimEnter * nested colorscheme joker
+# '''r'
+
+[[plugins]]
+repo = 'sjl/badwolf'
+# hook_add = '''
+#     set background=dark
+#     au MyAutoCmd VimEnter * nested colorscheme badwolf
+# '''

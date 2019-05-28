@@ -1,0 +1,107 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+on-if = '''! has('nvim')'''
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+on-if = '''! has('nvim')'''
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+hook_add = '''
+nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)
+
+'''
+
+# airline -----------------------------------------------
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+hook_add = '''
+  let g:airline_theme='distinguished'
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#formatter = 'default'
+  set laststatus=2
+  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#tabline#left_sep = '  '
+  let g:airline#extensions#tabline#left_alt_sep = ' '
+  let g:airline_left_sep = ' '
+  let g:airline_right_sep = ' '
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+# fzf ----------------------------------------------------
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = 0
+hook_add = '''
+  command! -bang -nargs=* Rg
+        \ call fzf#vim#grep(
+        \   'rg -g "!node_modules/*" --column --line-number  --no-heading --color=always '.shellescape(<q-args>), 0,
+        \   fzf#vim#with_preview({'options': '--exact --delimiter : --nth 3..'}, 'right:50%'))
+  nnoremap <silent> <C-t> :FZF<CR>
+  nnoremap ,g :Rg<CR>
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+
+
+# git ----------------------------------------------------
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# colorization -------------------------------------------
+[[plugins]]
+repo = 'vim-scripts/AnsiEsc.vim'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+hook_add = '''
+  " Delete whitespace automatically when current file is saved
+  autocmd BufWritePre *  call s:StripTrailingWhitespace()
+  fun! s:StripTrailingWhitespace()
+    " Only strip if the b:noStripeWhitespace variable isn't set
+    if exists('b:noStripWhitespace')
+      return
+    endif
+    :FixWhitespace
+  endfun
+'''
+
+[[plugins]]
+repo = 'chrisbra/Colorizer'
+hook_add = '''
+  autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'

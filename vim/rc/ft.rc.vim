@@ -15,4 +15,3 @@ autocmd Filetype coffee setlocal ts=2 sts=2 sw=2 et
 autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
 autocmd Filetype typescript setlocal ts=2 sts=2 sw=2 et
 " }}}
-

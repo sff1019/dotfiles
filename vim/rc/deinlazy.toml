@@ -1,0 +1,273 @@
+# deoplete ----------------------------------------
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
+hook_add = '''
+  let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
+  let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
+  let g:deoplete#enable_at_startup = 1
+  if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+  endif
+  let g:deoplete#auto_complete_delay = 0
+  let g:deoplete#auto_complete_start_length = 1
+  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+'''
+# defx --------------------------------------------------
+[[plugins]]
+repo = 'sh8/defx-icons'
+rev = 'AvailableXterm256'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+depends = ['defx-icons', 'defx-git']
+hook_add = '''
+map <silent> <C-\> :Defx -toggle -split=vertical -winwidth=30 -direction=topleft -resume<CR>
+'''
+hook_source = '''
+call defx#custom#option('_', {
+      \ 'columns': 'mark:indent:icons:filename:type',
+      \ })
+'''
+
+[plugins.ftplugin]
+defx='''
+  " Define mappings
+  nnoremap <silent><buffer><expr> o
+        \ defx#is_directory() ?
+        \ defx#do_action('open_tree') :
+        \ defx#do_action('multi', ['drop', 'quit'])
+  nnoremap <silent><buffer><expr> l
+        \ defx#async_action('open')
+  nnoremap <silent><buffer><expr> h
+        \ defx#do_action('close_tree')
+  nnoremap <silent><buffer><expr> H
+        \ defx#async_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> c
+        \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> C
+        \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> m
+        \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+        \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> K
+        \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> d
+        \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> x
+        \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+        \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+        \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ~
+        \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> <Space>
+        \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+        \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+        \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+        \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+        \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+        \ defx#do_action('change_vim_cwd')
+
+'''
+
+# lsp -------------------------------------------------------------
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+  let g:lsp_log_verbose = 1
+  let g:lsp_log_file = expand('~/vim-lsp.log')
+  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+  let g:lsp_diagnostics_enabled = 0
+'''
+hook_source = '''
+  if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ 'workspace_config': {'pyls': {'plugins': {
+        \   'pycodestyle': {'enabled': v:false},
+        \   'jedi_definition': {'follow_imports': v:true, 'follow_builtin_imports': v:true},}}}
+        \ })
+  endif
+
+  if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript'],
+        \ })
+  endif
+
+  if executable('cquery')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'cquery',
+        \ 'cmd': {server_info->['cquery']},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+        \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+        \ })
+  endif
+
+  if executable('go-langserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'go-langserver',
+        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+        \ 'whitelist': ['go'],
+        \ })
+  endif
+
+'''
+
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+
+
+
+# neosnippet -------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = ['neosnippet-snippets', 'context_filetype.vim']
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+hook_source = '''
+  imap <silent>L     <Plug>(neosnippet_jump_or_expand)
+  smap <silent>L     <Plug>(neosnippet_jump_or_expand)
+  xmap <silent>L     <Plug>(neosnippet_expand_target)
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_completed_snippet = 1
+  " let g:neosnippet#enable_complete_done = 1
+  let g:neosnippet#expand_word_boundary = 1
+  " let g:snippets_dir = '~/.vim/snippets/,~/.vim/bundle/snipmate/snippets/'
+  let g:neosnippet#snippets_directory = '~/.vim/snippets'
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+# echodoc ------------------------------------------
+[[plugins]]
+repo = 'Shougo/echodoc.vim'
+on_event = 'CompleteDone'
+
+# ale ----------------------------------------------
+[[plugins]]
+repo = 'w0rp/ale'
+on_ft = ['javascript', 'go', 'python', 'swift', 'typescript']
+hook_add = '''
+let g:ale_swift_swiftlint_executable = 'swiftlint'
+  let g:ale_swift_swiftlint_options = ''
+  let g:syntastic_python_checker_args='--ignore=E501'
+
+  let g:ale_linters = {
+        \   'javascript': ['eslint'],
+        \   'go': ['gofmt'],
+        \   'python': ['flake8'],
+        \   'swift': ['swiftlint'],
+        \   'typescript': ['tslint'],
+        \}
+  let g:ale_fixers = {
+        \   'javascript': ['eslint'],
+        \   'python': ['autopep8'],
+        \   'go': ['gofmt'],
+        \}
+  let g:ale_fix_on_save = 1
+'''
+# yank ---------------------------------------------------
+[[plugins]]
+repo = 'vim-scripts/YankRing.vim'
+on_event = 'TextYankPost'
+
+# indent guides
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+on_cmd = ['IndentGuidesEnable', 'IndentGuidesDisable', 'IndentGuidesToggle']
+
+
+# typescript linter -------------------------------------
+[[plugins]]
+repo = 'Quramy/tsuquyomi'
+rev = 'db073bb'
+hook_add = '''
+  autocmd InsertLeave,TextChanged,BufWritePost *.ts,*.tsx call tsuquyomi#asyncGeterr()
+  let g:tsuquyomi_use_vimproc = 0
+  let g:tsuquyomi_disable_quickfix = 1
+'''
+
+# jsx pretty ----------------------------------------------
+# The React syntax highlighting and indenting plugin for vim. Also supports the typescript tsx file.
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
+on_ft = ['javascript', 'typescript']
+hook_add = '''
+  let g:vim_jsx_pretty_colorful_config = 1
+'''
+
+# highlight cpp
+[[plugins]]
+repo = 'octol/vim-cpp-enhanced-highlight'
+on_ft = ['cpp']
+
+# xterm color table ----------------------------------------
+[[plugins]]
+repo = 'guns/xterm-color-table.vim'
+on_cmd = 'XtermColorTable'
+
+# markdown preview -----------------------------------------
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = ['markdown', 'pandoc.markdown']
+build = 'cd app & npm install'
+hook_add = '''
+let g:mkdp_auto_close = 0
+'''
+
+# vim tex --------------------------------------------------
+repo = 'lervag/vimtex'
+hook_add = '''
+  let g:vimtex_latexmk_enabled = 1
+  let g:tex_flavor='latex'
+  let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
+  let g:vimtex_compiler_latexmk = {
+        \ 'background' : 0,
+        \ 'build_dir' : '',
+        \ 'continuous' : 1,
+        \ 'options' : [
+        \   '-pdfdvi',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \   '-shell-escape',
+        \ ],
+        \}
+  let g:tex_conceal = ''
+  let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+  let g:vimtex_view_general_options = '@line @pdf @tex'
+'''
+
+# unite colorscheme ----------------------------------------
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+depends = ['unite.vim']

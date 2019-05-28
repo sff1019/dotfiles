@@ -1,4 +1,3 @@
-
 "set nowrap
 syntax enable
 
@@ -81,4 +80,3 @@ set background=dark
 colorscheme brogrammer
 " colorscheme solarized
 " colorscheme molokai
-

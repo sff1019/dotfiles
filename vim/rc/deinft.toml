@@ -1,0 +1,19 @@
+hook_add = '''
+" vim-coffee-script
+autocmd QuickFixCmdPost * nested cwindow | redraw!
+nnoremap <silent> <C-C> :CoffeeCompile vert <CR><C-w>h
+
+" vim-go
+let g:go_def_mapping_enabled = 0
+
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
+
+" vim-jsx
+let g:jsx_ext_required = 0
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+
+
+'''
