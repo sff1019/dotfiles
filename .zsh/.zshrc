@@ -1,20 +1,9 @@
-# Install zsh initial dependencies.
-if ! type "figlet" > /dev/null; then
-	echo 'Install figlet...'
-	brew install figlet
-fi
-
-if ! type "lolcat" > /dev/null; then
-	echo 'Install lolcat...'
-	sudo gem install lolcat
-fi
-
-# Show login text when you login
-LOGIN=$(figlet -f larry3d "Eureka!")
-echo $LOGIN | lolcat
+source ~/.zsh/modules/figlet.zsh
+source ~/.zsh/modules/prompt.zsh
 
 # Set Env variables
 export DEV="${HOME}/dev"
+export GOPATH="${HOME}/go"
 export LANG=ja_JP.UTF-8
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH="${HOME}/dev/plugins/google-cloud-sdk/bin:${PATH}"
@@ -24,6 +13,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export PATH="/usr/local/sbin:$PATH"
 export PATH=~/.local/bin:$PATH
 export PATH="${HOME}/.go/bin:$PATH"
+export PATH="/usr/local/go/bin:${PATH}"
 export PATH="${HOME}/dev/dotfiles/.tmux/bin:$PATH"
 export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
 export FZF_DEFAULT_OPTS='
@@ -58,12 +48,6 @@ setopt extended_glob
 bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
 
-# Initialize pyenv
-eval "$(pyenv init -)"
-
-# eval $(gdircolors ~/dev/plugins/dircolors-solarized/dircolors.ansi-dark)
-eval $(gdircolors ~/.dir_colors/dircolors.256dark)
-
 # Set alias
 alias l="ls"
 alias ls="gls --color=auto -l"
@@ -82,6 +66,8 @@ alias rs='rails s'
 alias -g G='| grep'
 alias vim="nvim"
 alias vi="vim"
+alias oldvim="\vim"
+
 
 # tmux shortcuts
 alias ta="tmux a -t" # attach to named
@@ -94,66 +80,12 @@ alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/li
 alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
 
 alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew'
-
 # Package installer
 source <(antibody init)
+
 antibody bundle < ~/.zsh_plugins.txt
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
-
-# get vcs_info with thi function
-autoload -Uz vcs_info
-autoload -Uz colors # black red green yellow blue magenta cyan white
-colors
-
-setopt prompt_subst
-
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-zstyle ':vcs_info:*' formats "%F{green}%c%u(%b)%f"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-
-# call vsc_info and open tab in the same directory
-precmd () {
-	vcs_info
-	print -Pn "\e]2; %~/ \a"
-}
-
-preexec () {
-	print -Pn "\e]2; %~/ \a"
-}
-
-PROMPT='%{$fg[cyan]%}%~:%{$reset_color%}'
-PROMPT=$PROMPT'${vcs_info_msg_0_} %{${fg[cyan]}%}%}$%{${reset_color}%} '
-
-autoload -Uz compinit
-compinit -C
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-	eval "$(git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)";
-fi
-
-# Execute when zsh initialized
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-eval "$(direnv hook zsh)"
-
-man() {
-    LESS_TERMCAP_md=$'\e[01;31m' \
-    LESS_TERMCAP_me=$'\e[0m' \
-    LESS_TERMCAP_se=$'\e[0m' \
-    LESS_TERMCAP_so=$'\e[01;44;33m' \
-    LESS_TERMCAP_ue=$'\e[0m' \
-    LESS_TERMCAP_us=$'\e[01;32m' \
-    command man "$@"
-}
-
-if [ -n "$LS_COLORS" ]; then
-  zstyle ':completion:*' list-colors menu select ${(s.:.)LS_COLORS}
-fi
 
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 

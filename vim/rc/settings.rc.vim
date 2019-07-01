@@ -40,6 +40,9 @@ set ignorecase
 " Encode
 set encoding=UTF-8
 
+" Height of command line
+" set cmdheight=2
+
 " Fastest way to move buffer
 nnoremap <silent><Left> :bp<CR>
 nnoremap <silent><Right> :bn<CR>
@@ -78,5 +81,6 @@ set background=dark
 " colorscheme joker
 " colorscheme falcon
 colorscheme brogrammer
+" colorscheme joker
 " colorscheme solarized
 " colorscheme molokai

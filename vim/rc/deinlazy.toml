@@ -13,6 +13,7 @@ hook_add = '''
   let g:deoplete#auto_complete_start_length = 1
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 '''
+
 # defx --------------------------------------------------
 [[plugins]]
 repo = 'sh8/defx-icons'
@@ -50,6 +51,8 @@ defx='''
         \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> C
         \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> O
+        \ defx#async_action('open_tree_recursive')
   nnoremap <silent><buffer><expr> m
         \ defx#do_action('move')
   nnoremap <silent><buffer><expr> p
@@ -167,6 +170,11 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'Shougo/echodoc.vim'
 on_event = 'CompleteDone'
+hook_source = '''
+set noshowmode
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#enable_force_overwrite = 1
+'''
 
 # ale ----------------------------------------------
 [[plugins]]
