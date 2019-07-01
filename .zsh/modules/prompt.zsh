@@ -1,5 +1,6 @@
 # Initialize pyenv
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # get vcs_info with thi function
 autoload -Uz vcs_info
@@ -17,6 +18,10 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 # call vsc_info and open tab in the same directory
 precmd () {
 	vcs_info
+  PYTHON_VIRTUAL_ENV_STRING=""
+  if [ -n "$VIRTUAL_ENV" ]; then
+    PYTHON_VIRTUAL_ENV_STRING="(`basename \"$VIRTUAL_ENV\"`) "
+  fi
 	print -Pn "\e]2; %~/ \a"
 }
 
@@ -24,8 +29,8 @@ preexec () {
 	print -Pn "\e]2; %~/ \a"
 }
 
-PROMPT='%{$fg_bold[green]%}($(pyenv version-name)) % %{$fg_bold[cyan]%}%~%{$reset_color%}'
-PROMPT=$PROMPT'${vcs_info_msg_0_} %{${fg_bold[cyan]}%}%}%{${reset_color}%} '
+PROMPT='%{$fg_bold[green]%}${PYTHON_VIRTUAL_ENV_STRING}%{$fg_bold[cyan]%}%~%{$reset_color%}'
+PROMPT=$PROMPT' ${vcs_info_msg_0_} %{${fg_bold[cyan]}%}%}%{${reset_color}%} '
 
 autoload -Uz compinit
 compinit -C
