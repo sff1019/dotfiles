@@ -249,12 +249,17 @@ let g:mkdp_auto_close = 0
 '''
 
 # vim tex --------------------------------------------------
+[[plugins]]
 repo = 'lervag/vimtex'
+on_ft = ['latex', 'tex']
 hook_add = '''
   let g:vimtex_latexmk_enabled = 1
-  let g:tex_flavor='latex'
+  let g:vimtex_quickfix_latexlog = {'default' : 0}
+  let g:vimtex_quickfix_autoclose_after_keystrokes = 1
+  let g:tex_flavor='platex'
   let g:vimtex_compiler_latexmk_engines = { '_' : '-pdfdvi' }
   let g:vimtex_compiler_latexmk = {
+        \ 'backend': 'nvim',
         \ 'background' : 0,
         \ 'build_dir' : '',
         \ 'continuous' : 1,
@@ -263,8 +268,8 @@ hook_add = '''
         \   '-verbose',
         \   '-file-line-error',
         \   '-synctex=1',
-        \   '-interaction=nonstopmode',
         \   '-shell-escape',
+        \   '-interaction=nonstopmode',
         \ ],
         \}
   let g:tex_conceal = ''
