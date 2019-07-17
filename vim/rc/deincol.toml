@@ -1,9 +1,9 @@
 # colorschemes --------------------------------------------
 [[plugins]]
 repo = 'sff1019/vim-brogrammer-theme'
-hook_add = '''
-    set background=dark
-'''
+# hook_add = '''
+#     set background=dark
+# '''
 
 [[plugins]]
 repo = 'nielsmadan/harlequin'
@@ -46,3 +46,17 @@ repo = 'sjl/badwolf'
 #     set background=dark
 #     au MyAutoCmd VimEnter * nested colorscheme badwolf
 # '''
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+# hook_add = '''
+#     set background=dark
+# '''
+
+[[plugins]]
+repo = 'mhartington/oceanic-next'
+hook_add = '''
+    set background=dark
+'''
+
+

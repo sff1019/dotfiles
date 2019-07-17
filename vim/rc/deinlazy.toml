@@ -251,8 +251,11 @@ let g:mkdp_auto_close = 0
 # vim tex --------------------------------------------------
 [[plugins]]
 repo = 'lervag/vimtex'
-on_ft = ['latex', 'tex']
-hook_add = '''
+on_ft = ['tex']
+hook_source = '''
+  setlocal spell
+  setlocal spelllang=en
+  set modeline
   let g:vimtex_latexmk_enabled = 1
   let g:vimtex_quickfix_latexlog = {'default' : 0}
   let g:vimtex_quickfix_autoclose_after_keystrokes = 1

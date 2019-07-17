@@ -78,9 +78,11 @@ set background=dark
 " colorscheme harlequin
 " colorscheme spacegray
 " colorscheme gotham
+colorscheme iceberg
+" colorscheme OceanicNext
 " colorscheme joker
 " colorscheme falcon
-colorscheme brogrammer
+" colorscheme brogrammer
 " colorscheme joker
 " colorscheme solarized
 " colorscheme molokai
