@@ -49,7 +49,6 @@ setopt extended_glob
 
 # Use viins keymaps
 bindkey -e
-bindkey '^R' history-incremental-pattern-search-backward
 
 # Set alias
 alias l="ls"
