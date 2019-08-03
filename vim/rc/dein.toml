@@ -108,3 +108,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
+
+# vim matlab
+[[plugins]]
+repo = 'daeyun/vim-matlab'

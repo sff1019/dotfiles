@@ -264,7 +264,7 @@ hook_source = '''
   let g:vimtex_compiler_latexmk = {
         \ 'backend': 'nvim',
         \ 'background' : 0,
-        \ 'build_dir' : '',
+        \ 'build_dir' : 'build/',
         \ 'continuous' : 1,
         \ 'options' : [
         \   '-pdfdvi',
