@@ -2,7 +2,7 @@
 
 clear
 
-echo "Starting to setup..."
+echo "Starting to setup...\n"
 echo ""
 echo "-----------****----------"
 echo ""
@@ -13,6 +13,10 @@ echo ""
 # brew install neovim
 # echo "brew install "
 
+DOTFILES="~/dev/dotfiles"
+
+git clone git@github.com:sff1019/dotfiles.git $HOME/dev/
+echo "Setting up zsh..."
 ZSH_DIR="~/.zsh"
 ZSH_FILE="~/.zshrc"
 
@@ -28,3 +32,38 @@ mkdir $ZSH_DIR/modules
 
 ln -s ~/dev/dotfiles/.zsh/modules/figlet.zsh ~/.zsh/modules/figlet.zsh
 ln -s ~/dev/dotfiles/.zsh/modules/figlet.zsh ~/.zsh/modules/prompt.zsh
+
+
+echo "Finished setting up zsh!!"
+
+echo "Setting up neovim"
+[ ! -d "~/.local" ] && mkdir -p "~/.local"
+
+echo "Installing neovim...\n"
+
+NEOVIM_DIR="~/.local/.neovim"
+NVIM_CONFIG="~/.config/nvim"
+pushd ~/.local  # ~/.local
+git clone git@github.com:neovim/neovim.git
+pushd neovim  # ~/.local/neovim
+git checkout stable
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
+make install
+export PATH="$HOME/.local/neovim/bin:$PATH"
+
+echo "Installed neovim!!\n"
+
+popd  # ~/.local
+popd  # ~
+
+[ ! -d "~/.config" ] && mkdir -p "~/.config"
+[ ! -d "~/.config/nvim" ] && mkdir -p "~/.config/nvim"
+
+ln -s $DOTFILES/.vimrc $NVIM_CONFIG/init.vim
+ln -s $DOTFILES/vim/rc/settings.rc.vim $NVIM_CONFIG/settings.rc.vim
+ln -s $DOTFILES/vim/rc/ft.rc.vim $NVIM_CONFIG/ft.rc.vim
+ln -s $DOTFILES/vim/rc/dein.toml $NVIM_CONFIG/dein.toml
+ln -s $DOTFILES/vim/rc/deinlazy.toml $NVIM_CONFIG/deinlazy.toml
+ln -s $DOTFILES/vim/rc/deincol.toml $NVIM_CONFIG/deincol.toml
+
+echo "Finished setting up nvim configs"
