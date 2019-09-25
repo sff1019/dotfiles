@@ -42,14 +42,18 @@ echo "Setting up neovim"
 echo "Installing neovim...\n"
 
 NEOVIM_DIR="~/.local/.neovim"
-NVIM_CONFIG="~/.config/nvim"
-pushd ~/.local  # ~/.local
-git clone git@github.com:neovim/neovim.git
-pushd neovim  # ~/.local/neovim
-git checkout stable
-make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
-make install
-export PATH="$HOME/.local/neovim/bin:$PATH"
+
+if [ ! -d $NEOVIM_DIR ]
+do
+  NVIM_CONFIG="~/.config/nvim"
+  pushd ~/.local  # ~/.local
+  git clone git@github.com:neovim/neovim.git
+  pushd neovim  # ~/.local/neovim
+  git checkout stable
+  make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/.local/neovim"
+  make install
+  export PATH="$HOME/.local/neovim/bin:$PATH"
+done
 
 echo "Installed neovim!!\n"
 
@@ -67,3 +71,6 @@ ln -s $DOTFILES/vim/rc/deinlazy.toml $NVIM_CONFIG/deinlazy.toml
 ln -s $DOTFILES/vim/rc/deincol.toml $NVIM_CONFIG/deincol.toml
 
 echo "Finished setting up nvim configs"
+
+echo "Setting up tmux"
+ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
