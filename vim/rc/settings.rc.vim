@@ -35,7 +35,7 @@ autocmd InsertLeave *
 set hlsearch
 
 " Search while ignoring case
-set ignorecase
+" set ignorecase
 
 " Encode
 set encoding=UTF-8

@@ -112,3 +112,7 @@ repo = 'ryanoasis/vim-devicons'
 # vim matlab
 [[plugins]]
 repo = 'daeyun/vim-matlab'
+
+# vim surround
+[[plugins]]
+repo = 'tpope/vim-surround'

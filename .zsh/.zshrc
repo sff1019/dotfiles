@@ -25,14 +25,14 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export TMPDIR='/tmp'
 export JAVA_HOME=/Library/Java/Home
 export PATH="$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh:${PATH}"
-export PREFIX=${HOME}/.local
-export PATH="$PREFIX/bin:$PATH"
+export PATH="${HOME}/.local/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export C_INCLUDE_PATH=/Users/hannah/.pyenv/versions/3.6.5/include/python3.6m/
 export PATH=/Developer/NVIDIA/CUDA-10.1/bin:$PATH
 export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.5/lib:$DYLD_LIBRARY_PATH
+export PYTHONPATH="${HOME}/dev/alpaca-dev/internship.hana/src"
 
 # History settings
 export HISTFILE=${HOME}/.zsh_history
