@@ -109,10 +109,15 @@ hook_add = '''
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
-# vim matlab
+# deoplete -----------------------------------------------
 [[plugins]]
-repo = 'daeyun/vim-matlab'
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+  source ~/.config/nvim/deoplete.rc.vim
+  let g:deoplete#enable_at_startup = 1
+'''
 
-# vim surround
 [[plugins]]
-repo = 'tpope/vim-surround'
+repo = 'tbodt/deoplete-tabnine'
+build = './install.sh'
+

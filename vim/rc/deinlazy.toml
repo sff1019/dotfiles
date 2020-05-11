@@ -1,18 +1,18 @@
-# deoplete ----------------------------------------
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_event = 'InsertEnter'
-hook_add = '''
-  let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
-  let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
-  let g:deoplete#enable_at_startup = 1
-  if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-  endif
-  let g:deoplete#auto_complete_delay = 0
-  let g:deoplete#auto_complete_start_length = 1
-  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-'''
+# # deoplete ----------------------------------------
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# on_event = 'InsertEnter'
+# hook_add = '''
+#   let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
+#   let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
+#   let g:deoplete#enable_at_startup = 1
+#   if !exists('g:deoplete#omni#input_patterns')
+#     let g:deoplete#omni#input_patterns = {}
+#   endif
+#   let g:deoplete#auto_complete_delay = 0
+#   let g:deoplete#auto_complete_start_length = 1
+#   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+# '''
 
 # defx --------------------------------------------------
 [[plugins]]
@@ -210,16 +210,6 @@ repo = 'nathanaelkane/vim-indent-guides'
 on_cmd = ['IndentGuidesEnable', 'IndentGuidesDisable', 'IndentGuidesToggle']
 
 
-# typescript linter -------------------------------------
-[[plugins]]
-repo = 'Quramy/tsuquyomi'
-rev = 'db073bb'
-hook_add = '''
-  autocmd InsertLeave,TextChanged,BufWritePost *.ts,*.tsx call tsuquyomi#asyncGeterr()
-  let g:tsuquyomi_use_vimproc = 0
-  let g:tsuquyomi_disable_quickfix = 1
-'''
-
 # jsx pretty ----------------------------------------------
 # The React syntax highlighting and indenting plugin for vim. Also supports the typescript tsx file.
 [[plugins]]
@@ -264,7 +254,6 @@ hook_source = '''
   let g:vimtex_compiler_latexmk = {
         \ 'backend': 'nvim',
         \ 'background' : 0,
-        \ 'build_dir' : 'build/',
         \ 'continuous' : 1,
         \ 'options' : [
         \   '-pdfdvi',
@@ -287,3 +276,11 @@ repo = 'Shougo/unite.vim'
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
 depends = ['unite.vim']
+
+[[plugins]]
+repo = 'cocopon/colorswatch.vim'
+on_cmd = ['ColorSwatchGenerate']
+
+[[plugins]]
+repo = 'cocopon/inspecthi.vim'
+on_cmd = ['Inspecthi']

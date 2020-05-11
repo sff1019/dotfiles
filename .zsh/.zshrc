@@ -33,6 +33,8 @@ export C_INCLUDE_PATH=/Users/hannah/.pyenv/versions/3.6.5/include/python3.6m/
 export PATH=/Developer/NVIDIA/CUDA-10.1/bin:$PATH
 export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.5/lib:$DYLD_LIBRARY_PATH
 export PYTHONPATH="${HOME}/dev/alpaca-dev/internship.hana/src"
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/
+alias opencvflags="pkg-config --cflags --libs opencv"
 
 # History settings
 export HISTFILE=${HOME}/.zsh_history
@@ -56,10 +58,9 @@ alias l="ls"
 alias ls="gls --color=auto -l"
 alias c="clear"
 
-alias gc="git checkout"
 alias gs="git status"
 alias gc="git commit -m"
-alias gd="git diff"
+alias gd="git diff --name-only | xargs bat --diff"
 alias gb="git branch"
 alias ga="git add"
 
@@ -70,6 +71,7 @@ alias -g G='| grep'
 alias vim="nvim"
 alias vi="vim"
 alias oldvim="\vim"
+alias devvim="nvim -u '~/dev/colorscheme/init.vim'"
 
 
 # tmux shortcuts
@@ -83,6 +85,26 @@ alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/li
 alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
 
 alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew'
+
+# bat
+if ! type "bat" > /dev/null; then
+	echo 'Install bat...'
+  case ${OSTYPE} in
+    darwin*)
+      brew install bat
+      ;;
+    linux*)
+      BAT_VERSION="v0.15.0"
+      BAT_LIBC="musl"
+      wget https://github.com/sharkdp/bat/releases/download/${BAT_VERSION}/bat-${BAT_VERSION}-x86_64-unknown-linux-${BAT_LIBC}.tar.gz -O ${PLUGIN}/bat.tar.gz
+      pushd ${PLUGIN}
+      tar xzvf bat.tar.gz
+      mv bat-${BAT_VERSION}-x86_64-unknown-linux-${BAT_LIBC}/bat ${HOME}/.local/bin
+      popd
+      ;;
+  esac
+fi
+
 # Package installer
 source <(antibody init)
 
@@ -97,3 +119,5 @@ if [ -f '/Users/hanna/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/hanna/goo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/hanna/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hanna/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

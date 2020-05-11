@@ -59,4 +59,11 @@ hook_add = '''
     set background=dark
 '''
 
+[[plugins]]
+repo = 'tlhr/anderson.vim'
 
+[[plugins]]
+repo = 'srcery-colors/srcery-vim'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'

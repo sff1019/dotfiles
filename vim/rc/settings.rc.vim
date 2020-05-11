@@ -75,14 +75,15 @@ set clipboard+=unnamedplus
 set background=dark
 
 " Colorscheme
-" colorscheme harlequin
-" colorscheme spacegray
-" colorscheme gotham
-colorscheme iceberg
 " colorscheme OceanicNext
-" colorscheme joker
-" colorscheme falcon
+" colorscheme anderson
 " colorscheme brogrammer
+" colorscheme falcon
+" colorscheme gotham
+" colorscheme harlequin
+colorscheme iceberg
 " colorscheme joker
-" colorscheme solarized
 " colorscheme molokai
+" colorscheme solarized
+" colorscheme srcery
+" colorscheme spacegray
