@@ -28,13 +28,13 @@ on-if = '''! has('nvim')'''
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 
-[[plugins]]
-repo = 'rhysd/accelerated-jk'
-hook_add = '''
-nmap j <Plug>(accelerated_jk_gj)
-nmap k <Plug>(accelerated_jk_gk)
-
-'''
+# [[plugins]]
+# repo = 'rhysd/accelerated-jk'
+# hook_add = '''
+# nmap j <Plug>(accelerated_jk_gj)
+# nmap k <Plug>(accelerated_jk_gk)
+#
+# '''
 
 # airline -----------------------------------------------
 [[plugins]]
@@ -109,6 +109,10 @@ hook_add = '''
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
+# easy motion --------------------------------------------
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
 # deoplete -----------------------------------------------
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -117,7 +121,7 @@ hook_add = '''
   let g:deoplete#enable_at_startup = 1
 '''
 
-[[plugins]]
-repo = 'tbodt/deoplete-tabnine'
-build = './install.sh'
-
+# [[plugins]]
+# repo = 'tbodt/deoplete-tabnine'
+# build = './install.sh'
+#

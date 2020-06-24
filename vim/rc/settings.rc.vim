@@ -43,6 +43,9 @@ set encoding=UTF-8
 " Height of command line
 " set cmdheight=2
 
+" map keybinds
+let mapleader = ","
+
 " Fastest way to move buffer
 nnoremap <silent><Left> :bp<CR>
 nnoremap <silent><Right> :bn<CR>
@@ -81,9 +84,9 @@ set background=dark
 " colorscheme falcon
 " colorscheme gotham
 " colorscheme harlequin
-colorscheme iceberg
+" colorscheme iceberg
 " colorscheme joker
 " colorscheme molokai
 " colorscheme solarized
-" colorscheme srcery
+colorscheme srcery
 " colorscheme spacegray
