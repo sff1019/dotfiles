@@ -194,7 +194,7 @@ let g:ale_swift_swiftlint_executable = 'swiftlint'
         \}
   let g:ale_fixers = {
         \   'javascript': ['eslint'],
-        \   'python': ['autopep8'],
+        \   'python': ['yapf'],
         \   'go': ['gofmt'],
         \}
   let g:ale_fix_on_save = 1
