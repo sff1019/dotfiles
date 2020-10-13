@@ -1,3 +1,6 @@
+let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
+let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
+
 "set nowrap
 syntax enable
 
@@ -23,6 +26,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Height of command line
+set cmdheight=2
+
 " Accessing the system clipboard
 set clipboard=unnamed
 
@@ -39,9 +45,6 @@ set hlsearch
 
 " Encode
 set encoding=UTF-8
-
-" Height of command line
-" set cmdheight=2
 
 " map keybinds
 let mapleader = ","

@@ -1,36 +1,76 @@
-# # deoplete ----------------------------------------
-# [[plugins]]
-# repo = 'Shougo/deoplete.nvim'
-# on_event = 'InsertEnter'
-# hook_add = '''
-#   let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
-#   let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
-#   let g:deoplete#enable_at_startup = 1
-#   if !exists('g:deoplete#omni#input_patterns')
-#     let g:deoplete#omni#input_patterns = {}
-#   endif
-#   let g:deoplete#auto_complete_delay = 0
-#   let g:deoplete#auto_complete_start_length = 1
-#   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-# '''
+# echodoc ----------------------------------------------------
+[[plugins]]
+repo = 'Shougo/echodoc.vim'
+on_event = 'CompleteDone'
+hook_source = '''
+  let g:echodoc#type = 'signature'
+  highlight link EchoDocFloat Pmenu
+  call echodoc#enable()
+'''
+
+# deoplete -----------------------------------------------
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+on_event = 'InsertEnter'
+hook_source = '''
+  source ~/.config/nvim/deoplete.rc.vim
+  call deoplete#enable()
+'''
+
+# preview -----------------------------------------------
+[[plugins]]
+repo = 'ncm2/float-preview.nvim'
+on_source = 'deoplete.nvim'
+if = 'has("nvim")'
+hook_source = '''
+  let g:float_preview#docked = 0
+  let g:float_preview#max_width = 60
+  let g:float_preview#max_height = 20
+'''
+
+# context_filetype --------------------------------------
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+on_map = {n = '<Plug>'}
+hook_add = '''
+  nmap <silent>j <Plug>(accelerated_jk_gj)
+  nmap <silent>k <Plug>(accelerated_jk_gk)
+'''
 
 # defx --------------------------------------------------
 [[plugins]]
-repo = 'sh8/defx-icons'
-rev = 'AvailableXterm256'
+repo = 'kristijanhusak/defx-icons'
 
 [[plugins]]
 repo = 'kristijanhusak/defx-git'
+hook_source = '''
+call defx#custom#column('git', 'indicators', {
+  \ 'Modified'  : '✹',
+  \ 'Staged'    : '✚',
+  \ 'Untracked' : '✭',
+  \ 'Renamed'   : '➜',
+  \ 'Unmerged'  : '═',
+  \ 'Ignored'   : '☒',
+  \ 'Deleted'   : '✖',
+  \ 'Unknown'   : '?'
+  \ })
+'''
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 depends = ['defx-icons', 'defx-git']
 hook_add = '''
-map <silent> <C-\> :Defx -toggle -split=vertical -winwidth=30 -direction=topleft -resume<CR>
+  map <silent> <C-\>
+    \ :Defx -toggle -split=vertical
+    \ -winwidth=30 -direction=topleft -resume<CR>
 '''
 hook_source = '''
 call defx#custom#option('_', {
-      \ 'columns': 'mark:indent:icons:filename:type',
+      \ 'columns': 'indent:git:icons:filename:type',
       \ })
 '''
 
@@ -90,61 +130,61 @@ defx='''
 
 '''
 
-# lsp -------------------------------------------------------------
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-hook_add = '''
-  let g:lsp_log_verbose = 1
-  let g:lsp_log_file = expand('~/vim-lsp.log')
-  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-  let g:lsp_diagnostics_enabled = 0
-'''
-hook_source = '''
-  if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ 'workspace_config': {'pyls': {'plugins': {
-        \   'pycodestyle': {'enabled': v:false},
-        \   'jedi_definition': {'follow_imports': v:true, 'follow_builtin_imports': v:true},}}}
-        \ })
-  endif
-
-  if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'typescript-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-        \ 'whitelist': ['typescript'],
-        \ })
-  endif
-
-  if executable('cquery')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'cquery',
-        \ 'cmd': {server_info->['cquery']},
-        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-        \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-        \ })
-  endif
-
-  if executable('go-langserver')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'go-langserver',
-        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-        \ 'whitelist': ['go'],
-        \ })
-  endif
-
-'''
-
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
-
-
-
+# # lsp -------------------------------------------------------------
+# [[plugins]]
+# repo = 'prabirshrestha/vim-lsp'
+# hook_add = '''
+#   let g:lsp_log_verbose = 1
+#   let g:lsp_log_file = expand('~/vim-lsp.log')
+#   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+#   let g:lsp_diagnostics_enabled = 0
+# '''
+# hook_source = '''
+#   if executable('pyls')
+#     au User lsp_setup call lsp#register_server({
+#         \ 'name': 'pyls',
+#         \ 'cmd': {server_info->['pyls']},
+#         \ 'whitelist': ['python'],
+#         \ 'workspace_config': {'pyls': {'plugins': {
+#         \   'pycodestyle': {'enabled': v:false},
+#         \   'jedi_definition': {'follow_imports': v:true, 'follow_builtin_imports': v:true},}}}
+#         \ })
+#   endif
+#
+#   if executable('typescript-language-server')
+#     au User lsp_setup call lsp#register_server({
+#         \ 'name': 'typescript-language-server',
+#         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+#         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+#         \ 'whitelist': ['typescript'],
+#         \ })
+#   endif
+#
+#   if executable('cquery')
+#     au User lsp_setup call lsp#register_server({
+#         \ 'name': 'cquery',
+#         \ 'cmd': {server_info->['cquery']},
+#         \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+#         \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
+#         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+#         \ })
+#   endif
+#
+#   if executable('go-langserver')
+#     au User lsp_setup call lsp#register_server({
+#         \ 'name': 'go-langserver',
+#         \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+#         \ 'whitelist': ['go'],
+#         \ })
+#   endif
+#
+# '''
+#
+# [[plugins]]
+# repo = 'lighttiger2505/deoplete-vim-lsp'
+#
+#
+#
 # neosnippet -------------------------------------------------------
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
@@ -166,39 +206,6 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-# echodoc ------------------------------------------
-[[plugins]]
-repo = 'Shougo/echodoc.vim'
-on_event = 'CompleteDone'
-hook_source = '''
-set noshowmode
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#enable_force_overwrite = 1
-'''
-
-# ale ----------------------------------------------
-[[plugins]]
-repo = 'w0rp/ale'
-on_ft = ['javascript', 'go', 'python', 'swift', 'typescript']
-hook_add = '''
-let g:ale_swift_swiftlint_executable = 'swiftlint'
-  let g:ale_swift_swiftlint_options = ''
-  let g:syntastic_python_checker_args='--ignore=E501'
-
-  let g:ale_linters = {
-        \   'javascript': ['eslint'],
-        \   'go': ['gofmt'],
-        \   'python': ['flake8'],
-        \   'swift': ['swiftlint'],
-        \   'typescript': ['tslint'],
-        \}
-  let g:ale_fixers = {
-        \   'javascript': ['eslint'],
-        \   'python': ['yapf'],
-        \   'go': ['gofmt'],
-        \}
-  let g:ale_fix_on_save = 1
-'''
 # yank ---------------------------------------------------
 [[plugins]]
 repo = 'vim-scripts/YankRing.vim'

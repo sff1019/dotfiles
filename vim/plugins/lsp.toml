@@ -1,0 +1,27 @@
+# python ---------------------------------------------
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-jedi'
+depends = 'deoplete.nvim'
+on_ft = 'python'
+
+# golang ---------------------------------------------
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-go'
+build = 'make'
+on_ft = 'go'
+depends = ['deoplete.nvim']
+hook_source = '''
+    let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
+'''
+
+# clang  ---------------------------------------------
+[[plugins]]
+repo = 'Shougo/deoplete-clangx'
+depends = 'deoplete.nvim'
+on_ft = ['c', 'cpp']
+
+# vim  ---------------------------------------------
+[[plugins]]
+repo = 'Shougo/neco-vim'
+depends = 'deoplete.nvim'
+on_ft = ['vim']

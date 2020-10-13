@@ -4,7 +4,7 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 hook_add = '''
-let g:polyglot_disabled = ['latex']
+let g:polyglot_disabled = ['latex', 'go']
 '''
 
 [[plugins]]
@@ -14,27 +14,15 @@ build = 'make'
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
-
+# [[plugins]]
+# repo = 'prabirshrestha/async.vim'
+#
 [[plugins]]
 repo = 'roxma/nvim-yarp'
 on-if = '''! has('nvim')'''
 
 [[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-on-if = '''! has('nvim')'''
-
-[[plugins]]
 repo = 'tomtom/tcomment_vim'
-
-# [[plugins]]
-# repo = 'rhysd/accelerated-jk'
-# hook_add = '''
-# nmap j <Plug>(accelerated_jk_gj)
-# nmap k <Plug>(accelerated_jk_gk)
-#
-# '''
 
 # airline -----------------------------------------------
 [[plugins]]
@@ -82,10 +70,10 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
-# colorization -------------------------------------------
-[[plugins]]
-repo = 'vim-scripts/AnsiEsc.vim'
-
+# # colorization -------------------------------------------
+# [[plugins]]
+# repo = 'vim-scripts/AnsiEsc.vim'
+#
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 hook_add = '''
@@ -100,11 +88,11 @@ hook_add = '''
   endfun
 '''
 
-[[plugins]]
-repo = 'chrisbra/Colorizer'
-hook_add = '''
-  autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
-'''
+# [[plugins]]
+# repo = 'chrisbra/Colorizer'
+# hook_add = '''
+#   autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
+# '''
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -113,15 +101,30 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
-# deoplete -----------------------------------------------
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-  source ~/.config/nvim/deoplete.rc.vim
-  let g:deoplete#enable_at_startup = 1
-'''
-
 # [[plugins]]
-# repo = 'tbodt/deoplete-tabnine'
-# build = './install.sh'
+# repo = 'lighttiger2505/deoplete-vim-lsp'
 #
+# ale ----------------------------------------------
+[[plugins]]
+repo = 'w0rp/ale'
+on_ft = ['javascript', 'go', 'python', 'swift', 'typescript']
+hook_add = '''
+let g:ale_swift_swiftlint_executable = 'swiftlint'
+  let g:ale_swift_swiftlint_options = ''
+  let g:syntastic_python_checker_args='--ignore=E501'
+
+  let g:ale_linters = {
+        \   'javascript': ['eslint'],
+        \   'cpp': ['g++'],
+        \   'go': ['gofmt'],
+        \   'python': ['flake8'],
+        \   'swift': ['swiftlint'],
+        \   'typescript': ['tslint'],
+        \}
+  let g:ale_fixers = {
+        \   'javascript': ['eslint'],
+        \   'python': ['yapf'],
+        \   'go': ['gofmt'],
+        \}
+  let g:ale_fix_on_save = 1
+'''
