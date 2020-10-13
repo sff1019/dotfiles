@@ -63,14 +63,18 @@ popd  # ~
 [ ! -d "~/.config" ] && mkdir -p "~/.config"
 [ ! -d "~/.config/nvim" ] && mkdir -p "~/.config/nvim"
 
+echo "Setup nvim"
 ln -s $DOTFILES/.vimrc $NVIM_CONFIG/init.vim
 ln -s $DOTFILES/vim/rc/settings.rc.vim $NVIM_CONFIG/settings.rc.vim
 ln -s $DOTFILES/vim/rc/ft.rc.vim $NVIM_CONFIG/ft.rc.vim
 ln -s $DOTFILES/vim/rc/dein.toml $NVIM_CONFIG/dein.toml
 ln -s $DOTFILES/vim/rc/deinlazy.toml $NVIM_CONFIG/deinlazy.toml
 ln -s $DOTFILES/vim/rc/deincol.toml $NVIM_CONFIG/deincol.toml
+ln -s $DOTFILES/vim/rc/plugins/deoplete.rc.vim $NVIM_CONFIG/deoplete.rc.vim
+ln -s $DOTFILES/vim/rc/plugins/lsp.toml $NVIM_CONFIG/lsp.toml
 
 echo "Finished setting up nvim configs"
 
 echo "Setting up tmux"
 ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
+
