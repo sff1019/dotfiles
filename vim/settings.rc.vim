@@ -91,5 +91,6 @@ set background=dark
 " colorscheme joker
 " colorscheme molokai
 " colorscheme solarized
-colorscheme srcery
+" colorscheme srcery
 " colorscheme spacegray
+colorscheme nord
