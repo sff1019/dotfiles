@@ -3,7 +3,6 @@ source ~/.zsh/modules/prompt.zsh
 
 # Set Env variables
 export DEV="${HOME}/dev"
-export GOPATH="${HOME}/go"
 export LANG=ja_JP.UTF-8
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH="${HOME}/dev/plugins/google-cloud-sdk/bin:${PATH}"
@@ -12,10 +11,12 @@ export PGDATA=/usr/local/var/postgres
 export XDG_CONFIG_HOME=$HOME/.config
 export PATH="/usr/local/sbin:$PATH"
 export PATH=~/.local/bin:$PATH
+export PATH=$PATH:~/.local/bin
 export PATH="${HOME}/.go/bin:$PATH"
 export PATH="/usr/local/go/bin:${PATH}"
 export PATH="${HOME}/dev/dotfiles/.tmux/bin:$PATH"
 export PATH="/Applications/MATLAB_R2019a.app/bin:$PATH"
+export PATH="$PATH:/usr/local/bin"
 export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
 export FZF_DEFAULT_OPTS='
 		--color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254
@@ -32,9 +33,15 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export C_INCLUDE_PATH=/Users/hannah/.pyenv/versions/3.6.5/include/python3.6m/
 export PATH=/Developer/NVIDIA/CUDA-10.1/bin:$PATH
 export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.5/lib:$DYLD_LIBRARY_PATH
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
 export PYTHONPATH="${HOME}/dev/alpaca-dev/internship.hana/src"
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/
 alias opencvflags="pkg-config --cflags --libs opencv"
+# GO
+export GOPATH="${HOME}/go"
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
 
 # History settings
 export HISTFILE=${HOME}/.zsh_history
@@ -121,3 +128,4 @@ if [ -f '/Users/hanna/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/hanna/goo
 if [ -f '/Users/hanna/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hanna/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
