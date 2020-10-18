@@ -4,6 +4,8 @@ let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
 "set nowrap
 syntax enable
 
+" disable preview window
+set completeopt-=preview
 
 " Set statusline
 set laststatus=2
@@ -91,5 +93,6 @@ set background=dark
 " colorscheme joker
 " colorscheme molokai
 " colorscheme solarized
-colorscheme srcery
+" colorscheme srcery
 " colorscheme spacegray
+colorscheme nord

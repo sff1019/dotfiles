@@ -34,3 +34,6 @@ repo = 'srcery-colors/srcery-vim'
 
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo = 'sff1019/nord-vim'

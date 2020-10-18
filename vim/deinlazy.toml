@@ -3,9 +3,8 @@
 repo = 'Shougo/echodoc.vim'
 on_event = 'CompleteDone'
 hook_source = '''
-  let g:echodoc#type = 'signature'
-  highlight link EchoDocFloat Pmenu
-  call echodoc#enable()
+  let g:echodoc#enable_at_startup = 1
+  let g:echodoc#type = 'floating'
 '''
 
 # deoplete -----------------------------------------------
@@ -17,6 +16,16 @@ hook_source = '''
   source ~/.config/nvim/deoplete.rc.vim
   call deoplete#enable()
 '''
+
+# [[plugins]]
+# repo = 'prabirshrestha/vim-lsp'
+# depends = 'deoplete.vim'
+# hook_add = '''
+#   let g:lsp_log_file = ''
+#   let g:lsp_log_verbose = 1
+#   let g:lsp_diagnostics_enabled = 0
+#   source ~/.config/nvim/lsp.rc.vim
+# '''
 
 # preview -----------------------------------------------
 [[plugins]]
@@ -130,61 +139,6 @@ defx='''
 
 '''
 
-# # lsp -------------------------------------------------------------
-# [[plugins]]
-# repo = 'prabirshrestha/vim-lsp'
-# hook_add = '''
-#   let g:lsp_log_verbose = 1
-#   let g:lsp_log_file = expand('~/vim-lsp.log')
-#   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-#   let g:lsp_diagnostics_enabled = 0
-# '''
-# hook_source = '''
-#   if executable('pyls')
-#     au User lsp_setup call lsp#register_server({
-#         \ 'name': 'pyls',
-#         \ 'cmd': {server_info->['pyls']},
-#         \ 'whitelist': ['python'],
-#         \ 'workspace_config': {'pyls': {'plugins': {
-#         \   'pycodestyle': {'enabled': v:false},
-#         \   'jedi_definition': {'follow_imports': v:true, 'follow_builtin_imports': v:true},}}}
-#         \ })
-#   endif
-#
-#   if executable('typescript-language-server')
-#     au User lsp_setup call lsp#register_server({
-#         \ 'name': 'typescript-language-server',
-#         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-#         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-#         \ 'whitelist': ['typescript'],
-#         \ })
-#   endif
-#
-#   if executable('cquery')
-#     au User lsp_setup call lsp#register_server({
-#         \ 'name': 'cquery',
-#         \ 'cmd': {server_info->['cquery']},
-#         \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-#         \ 'initialization_options': { 'cacheDirectory': '/tmp/cquery/cache' },
-#         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-#         \ })
-#   endif
-#
-#   if executable('go-langserver')
-#     au User lsp_setup call lsp#register_server({
-#         \ 'name': 'go-langserver',
-#         \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-#         \ 'whitelist': ['go'],
-#         \ })
-#   endif
-#
-# '''
-#
-# [[plugins]]
-# repo = 'lighttiger2505/deoplete-vim-lsp'
-#
-#
-#
 # neosnippet -------------------------------------------------------
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
