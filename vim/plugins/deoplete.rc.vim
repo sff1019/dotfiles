@@ -12,7 +12,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-" <S-TAB>: completion back.
+" " <S-TAB>: completion back.
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 
 inoremap <expr><C-g>       deoplete#refresh()
@@ -25,19 +25,11 @@ function! s:my_cr_function() abort
   return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
 endfunction
 
-" cpsm test
-" call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
-" call deoplete#custom#source('_', 'sorters', [])
-
 call deoplete#custom#source('_', 'matchers',
       \ ['matcher_fuzzy', 'matcher_length'])
 call deoplete#custom#source('denite', 'matchers',
       \ ['matcher_full_fuzzy', 'matcher_length'])
 call deoplete#custom#source('eskk', 'matchers', [])
-" call deoplete#custom#source('buffer', 'mark', '')
-" call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
-" call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
-" call deoplete#custom#source('buffer', 'mark', '*')
 
 call deoplete#custom#option('ignore_sources', {
       \ '_': ['buffer'],
@@ -57,28 +49,17 @@ call deoplete#custom#source('_', 'converters', [
       \ ])
 call deoplete#custom#source('eskk', 'converters', [])
 
-" call deoplete#custom#source('buffer', 'min_pattern_length', 9999)
-" call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
-" call deoplete#custom#source('clang', 'max_pattern_length', -1)
-
 call deoplete#custom#option('keyword_patterns', {
       \ '_': '[a-zA-Z_]\k*\(?',
       \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
       \ })
 
-" inoremap <silent><expr> <C-t> deoplete#manual_complete('file')
-
 call deoplete#custom#option({
       \ 'auto_refresh_delay': 10,
       \ 'camel_case': v:true,
       \ 'skip_multibyte': v:true,
-      \ 'auto_preview': v:true,
       \ })
 call deoplete#custom#option('num_processes', 1)
-
-" call deoplete#custom#option('profile', v:true)
-" call deoplete#enable_logging('DEBUG', 'deoplete.log')
-" call deoplete#custom#source('clang', 'debug_enabled', 1)
 
 call deoplete#custom#option('candidate_marks',
       \ ['A', 'S', 'D', 'F', 'G'])

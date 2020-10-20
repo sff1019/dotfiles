@@ -6,6 +6,7 @@ syntax enable
 
 " disable preview window
 set completeopt-=preview
+set completeopt+=noinsert
 
 " Set statusline
 set laststatus=2
@@ -27,9 +28,9 @@ set softtabstop=2
 set tabstop=2
 set shiftwidth=2
 set expandtab
-
-" Height of command line
-set cmdheight=2
+"
+" " Height of command line
+" set cmdheight=2
 
 " Accessing the system clipboard
 set clipboard=unnamed
