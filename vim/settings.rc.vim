@@ -14,6 +14,9 @@ set laststatus=2
 " Display line number
 set nu
 
+" Set spell
+set nospell
+
 " Highlight a matching opening or closing parenthesis, square bracket or a curly brace
 set showmatch
 
@@ -96,5 +99,6 @@ set background=dark
 " colorscheme solarized
 " colorscheme srcery
 " colorscheme spacegray
-" colorscheme nord
-colorscheme hybrid_material
+colorscheme nord
+" colorscheme trash-polka
+

@@ -39,4 +39,4 @@ repo = 'altercation/vim-colors-solarized'
 repo = 'sff1019/nord-vim'
 
 [[plugins]]
-repo = 'kristijanhusak/vim-hybrid-material'
+repo = 'a/vim-trash-polka'
