@@ -37,3 +37,6 @@ repo = 'altercation/vim-colors-solarized'
 
 [[plugins]]
 repo = 'sff1019/nord-vim'
+
+[[plugins]]
+repo = 'kristijanhusak/vim-hybrid-material'

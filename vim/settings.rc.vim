@@ -96,4 +96,5 @@ set background=dark
 " colorscheme solarized
 " colorscheme srcery
 " colorscheme spacegray
-colorscheme nord
+" colorscheme nord
+colorscheme hybrid_material
