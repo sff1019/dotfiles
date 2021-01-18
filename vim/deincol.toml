@@ -40,3 +40,12 @@ repo = 'sff1019/nord-vim'
 
 [[plugins]]
 repo = 'a/vim-trash-polka'
+
+[[plugins]]
+repo = 'raphamorim/lucario'
+
+[[plugins]]
+repo = 'rhysd/vim-color-spring-night'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'

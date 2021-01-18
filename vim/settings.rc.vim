@@ -7,6 +7,7 @@ syntax enable
 " disable preview window
 set completeopt-=preview
 set completeopt+=noinsert
+set completeopt=menuone,noinsert
 
 " Set statusline
 set laststatus=2
@@ -31,6 +32,8 @@ set softtabstop=2
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
+set cursorline
 "
 " " Height of command line
 " set cmdheight=2
@@ -92,13 +95,16 @@ set background=dark
 " colorscheme brogrammer
 " colorscheme falcon
 " colorscheme gotham
+colorscheme gruvbox
 " colorscheme harlequin
 " colorscheme iceberg
 " colorscheme joker
+" colorscheme  lucario
+" colorscheme spring-night
 " colorscheme molokai
+" colorscheme nord
 " colorscheme solarized
-" colorscheme srcery
 " colorscheme spacegray
-colorscheme nord
+" colorscheme srcery
 " colorscheme trash-polka
 

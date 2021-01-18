@@ -15,6 +15,8 @@ endfunction
 " " <S-TAB>: completion back.
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 
+inoremap <expr><C-p>  pumvisible() ? "\<C-p>" : "\<C-o>:call deoplete#handler#_skip_next_completion()\<CR>\<C-p>"
+
 inoremap <expr><C-g>       deoplete#refresh()
 inoremap <expr><C-e>       deoplete#cancel_popup()
 inoremap <silent><expr><C-l>       deoplete#complete_common_string()
