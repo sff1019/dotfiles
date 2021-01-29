@@ -95,9 +95,9 @@ set background=dark
 " colorscheme brogrammer
 " colorscheme falcon
 " colorscheme gotham
-colorscheme gruvbox
+" colorscheme gruvbox
 " colorscheme harlequin
-" colorscheme iceberg
+colorscheme iceberg
 " colorscheme joker
 " colorscheme  lucario
 " colorscheme spring-night
