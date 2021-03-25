@@ -62,7 +62,6 @@ hook_add = '''
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
 
-
 # git ----------------------------------------------------
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
@@ -101,9 +100,7 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
-# [[plugins]]
-# repo = 'lighttiger2505/deoplete-vim-lsp'
-#
+
 # ale ----------------------------------------------
 [[plugins]]
 repo = 'w0rp/ale'
@@ -128,3 +125,7 @@ let g:ale_swift_swiftlint_executable = 'swiftlint'
         \}
   let g:ale_fix_on_save = 1
 '''
+
+# super tab ----------------------------------------------------
+[[plugins]]
+repo = 'ervandew/supertab'

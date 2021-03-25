@@ -26,7 +26,7 @@ let s:dein_toml = '~/.config/nvim/dein.toml'
 let s:dein_lazy_toml = '~/.config/nvim/deinlazy.toml'
 let s:dein_ft_toml = '~/.config/nvim/deinft.toml'
 let s:dein_color_toml = '~/.config/nvim/deincol.toml'
-let s:lsp_toml = '~/.config/nvim/lsp.toml'
+let s:lsp_toml = '~/.config/nvim/plugins/lsp.toml'
 
 "  Install dein automatically
 if !isdirectory(s:dein_repo_dir)
@@ -44,7 +44,7 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:dein_toml, {'lazy': 0})
   call dein#load_toml(s:dein_color_toml, {'lazy': 0})
   call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
-  call dein#load_toml(s:lsp_toml, {'lazy': 1})
+  " call dein#load_toml(s:lsp_toml, {'lazy': 1})
   call dein#load_toml(s:dein_ft_toml)
 
   call dein#end()

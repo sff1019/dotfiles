@@ -1,5 +1,6 @@
 let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
 let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
+" let g:python3_host_prog = '/home/hoshino.h/miniconda3/envs/rllab37/bin/python'
 
 "set nowrap
 syntax enable

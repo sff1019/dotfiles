@@ -13,20 +13,23 @@ repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
 hook_source = '''
-  source ~/.config/nvim/deoplete.rc.vim
+  source ~/.config/nvim/plugins/deoplete.rc.vim
   call deoplete#enable()
 '''
 
-# [[plugins]]
-# repo = 'prabirshrestha/vim-lsp'
-# depends = 'deoplete.vim'
-# hook_add = '''
-#   let g:lsp_log_file = ''
-#   let g:lsp_log_verbose = 1
-#   let g:lsp_diagnostics_enabled = 0
-#   source ~/.config/nvim/lsp.rc.vim
-# '''
-
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+depends = 'deoplete.vim'
+hook_add = '''
+  let g:lsp_log_file = ''
+  let g:lsp_log_verbose = 1
+  let g:lsp_diagnostics_enabled = 0
+  source ~/.config/nvim/plugins/lsp.rc.vim
+'''
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+depends = 'deoplete.vim'
+#
 # preview -----------------------------------------------
 [[plugins]]
 repo = 'ncm2/float-preview.nvim'
