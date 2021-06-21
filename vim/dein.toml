@@ -35,10 +35,7 @@ hook_add = '''
   set laststatus=2
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#tabline#fnamemod = ':t'
-  let g:airline#extensions#tabline#left_sep = '  '
   let g:airline#extensions#tabline#left_alt_sep = ' '
-  let g:airline_left_sep = ' '
-  let g:airline_right_sep = ' '
 '''
 
 [[plugins]]
@@ -125,7 +122,3 @@ let g:ale_swift_swiftlint_executable = 'swiftlint'
         \}
   let g:ale_fix_on_save = 1
 '''
-
-# super tab ----------------------------------------------------
-[[plugins]]
-repo = 'ervandew/supertab'

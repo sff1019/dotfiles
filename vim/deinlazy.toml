@@ -7,39 +7,46 @@ hook_source = '''
   let g:echodoc#type = 'floating'
 '''
 
-# deoplete -----------------------------------------------
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-hook_source = '''
-  source ~/.config/nvim/plugins/deoplete.rc.vim
-  call deoplete#enable()
-'''
-
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-depends = 'deoplete.vim'
-hook_add = '''
-  let g:lsp_log_file = ''
-  let g:lsp_log_verbose = 1
-  let g:lsp_diagnostics_enabled = 0
-  source ~/.config/nvim/plugins/lsp.rc.vim
-'''
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
-depends = 'deoplete.vim'
+# # deoplete -----------------------------------------------
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# depends = 'context_filetype.vim'
+# on_event = 'InsertEnter'
+# hook_source = '''
+#   source ~/.config/nvim/plugins/deoplete.rc.vim
+#   call deoplete#enable()
+# '''
 #
-# preview -----------------------------------------------
 [[plugins]]
-repo = 'ncm2/float-preview.nvim'
-on_source = 'deoplete.nvim'
-if = 'has("nvim")'
-hook_source = '''
-  let g:float_preview#docked = 0
-  let g:float_preview#max_width = 60
-  let g:float_preview#max_height = 20
-'''
+repo = 'neoclide/coc.nvim'
+merged = '0'
+rev = 'release'
+hook_add = """
+  source ~/.config/nvim/plugins/coc.rc.vim
+"""
+# [[plugins]]
+# repo = 'prabirshrestha/vim-lsp'
+# depends = 'deoplete.vim'
+# hook_add = '''
+#   let g:lsp_log_file = ''
+#   let g:lsp_log_verbose = 1
+#   let g:lsp_diagnostics_enabled = 0
+#   source ~/.config/nvim/plugins/lsp.rc.vim
+# '''
+# [[plugins]]
+# repo = 'lighttiger2505/deoplete-vim-lsp'
+# depends = 'deoplete.vim'
+# #
+# # preview -----------------------------------------------
+# [[plugins]]
+# repo = 'ncm2/float-preview.nvim'
+# on_source = 'deoplete.nvim'
+# if = 'has("nvim")'
+# hook_source = '''
+#   let g:float_preview#docked = 0
+#   let g:float_preview#max_width = 60
+#   let g:float_preview#max_height = 20
+# '''
 
 # context_filetype --------------------------------------
 [[plugins]]
