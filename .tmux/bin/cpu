@@ -20,11 +20,11 @@ get_cpu_percentage() {
 
 print_cpu_percentage() {
   if [[ $percentage -ge 80 ]]; then
-    cpu="#[fg=colour9]   ${percentage} %"
+    cpu="#[fg=#e27878]   ${percentage} %"
   elif [[ $percentage -ge 30 ]] && [[ $percentage -lt 80 ]]; then
-    cpu="#[fg=colour214]   ${percentage} %"
+    cpu="#[fg=#e4aa80]   ${percentage} %"
   else
-    cpu="#[fg=colour36]   ${percentage} %"
+    cpu="#[fg=#48C9B0]   ${percentage} %"
   fi
 }
 
