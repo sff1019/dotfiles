@@ -1,11 +1,19 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# [[plugins]]
+# repo = 'sheerun/vim-polyglot'
+# hook_add = '''
+# let g:polyglot_disabled = ['latex', 'go']
+# '''
+
 [[plugins]]
-repo = 'sheerun/vim-polyglot'
-hook_add = '''
-let g:polyglot_disabled = ['latex', 'go']
-'''
+repo = 'neoclide/coc.nvim'
+merged = '0'
+rev = 'release'
+hook_add = """
+  source ~/.config/nvim/plugins/coc.rc.vim
+"""
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -14,9 +22,6 @@ build = 'make'
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
-# [[plugins]]
-# repo = 'prabirshrestha/async.vim'
-#
 [[plugins]]
 repo = 'roxma/nvim-yarp'
 on-if = '''! has('nvim')'''

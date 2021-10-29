@@ -13,6 +13,9 @@ set completeopt=menuone,noinsert
 " Set statusline
 set laststatus=2
 
+" Set number of lines  after EOF
+set scrolloff=10
+
 " Display line number
 set nu
 
