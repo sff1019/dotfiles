@@ -22,16 +22,16 @@ if air_info=($(eval "$airport_path" -I | grep -E "^ *(agrCtlRSSI|state|SSID):" |
 
       if [[ $strength -ge 75 ]];
       then
-        airport_="#[fg=colour36]#[bg=colour36, fg=colour0]   ${ssid}#[fg=colour0] ${strength} %"
+        airport_="#[fg=cyan]#[bg=cyan, fg=colour0]   ${ssid}#[fg=colour0] ${strength} %"
       elif [[ $strength -ge 25 ]] && [[ $strength -lt 75 ]];
       then
-        airport_="#[fg=colour214]#[bg=colour214, fg=colour0]   ${ssid}#[fg=colour0] ${strength} %"
+        airport_="#[fg=#ebcb8b]#[bg=#ebcb8b, fg=colour0]   ${ssid}#[fg=colour0] ${strength} %"
       else
-        airport_="#[fg=colour203]#[bg=colour203, fg=colour0]   ${ssid}#[fg=colour0] ${strength} %"
+        airport_="#[fg=#e27878]#[bg=#e27878, fg=colour0]   ${ssid}#[fg=colour0] ${strength} %"
       fi
     ;;
-    "init"    ) airport_="#[fg=colour226]#[bg=colour226, fg=colour0]    " ;;
-    *         ) airport_="#[fg=colour1]#[bg=colour1, fg=colour0] 睊 " ;;
+    "init"    ) airport_="#[fg=cyan]#[bg=colour226, fg=colour0]    " ;;
+    *         ) airport_="#[fg=colour1]#[bg=colour1, fg=colour0] 睊 " ;;
   esac
   ssid="#[bold]#[default]${airport_}"
   echo $ssid
