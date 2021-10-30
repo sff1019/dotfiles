@@ -1,6 +1,4 @@
-let g:python2_host_prog = $HOME . '/.pyenv/shims/python2'
 let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
-" let g:python3_host_prog = '/home/hoshino.h/miniconda3/envs/rllab37/bin/python'
 
 "set nowrap
 syntax enable
@@ -37,7 +35,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-set cursorline
+" set cursorline
 "
 " " Height of command line
 " set cmdheight=2
@@ -92,23 +90,27 @@ set clipboard+=unnamedplus
 
 " Set background dark
 set background=dark
+set termguicolors
+let g:hybrid_custom_term_colors = 1
+" let g:everforest_background = 'medium'
+" let g:gruvbox_material_background = 'medium'
 
 " Colorscheme
 " colorscheme OceanicNext
-" colorscheme anderson
+colorscheme anderson
 " colorscheme brogrammer
 " colorscheme falcon
 " colorscheme gotham
 " colorscheme gruvbox
 " colorscheme harlequin
-colorscheme iceberg
+" colorscheme iceberg
 " colorscheme joker
-" colorscheme  lucario
+" colorscheme lucario
 " colorscheme spring-night
-" colorscheme molokai
-" colorscheme nord
-" colorscheme solarized
 " colorscheme spacegray
 " colorscheme srcery
 " colorscheme trash-polka
-
+" colorscheme everforest
+" colorscheme hybrid_material
+" colorscheme gruvbox-material
+" colorscheme two-firewatch

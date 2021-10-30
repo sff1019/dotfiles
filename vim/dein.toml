@@ -1,17 +1,12 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# [[plugins]]
-# repo = 'sheerun/vim-polyglot'
-# hook_add = '''
-# let g:polyglot_disabled = ['latex', 'go']
-# '''
-
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merged = '0'
 rev = 'release'
 hook_add = """
+  let g:coc_global_config="$HOME/.config/nvim/plugins/coc-settings.json"
   source ~/.config/nvim/plugins/coc.rc.vim
 """
 
@@ -34,7 +29,7 @@ repo = 'tomtom/tcomment_vim'
 repo = 'vim-airline/vim-airline'
 depends = ['vim-airline-themes']
 hook_add = '''
-  let g:airline_theme = 'iceberg'
+  let g:airline_theme = 'tomorrow'
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#formatter = 'default'
   set laststatus=2
@@ -64,36 +59,17 @@ hook_add = '''
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
 
-# git ----------------------------------------------------
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-
+# # git ----------------------------------------------------
+# [[plugins]]
+# repo = 'airblade/vim-gitgutter'
+#
+# [[plugins]]
+# repo = 'tpope/vim-fugitive'
+#
 # # colorization -------------------------------------------
 # [[plugins]]
 # repo = 'vim-scripts/AnsiEsc.vim'
 #
-[[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
-hook_add = '''
-  " Delete whitespace automatically when current file is saved
-  autocmd BufWritePre *  call s:StripTrailingWhitespace()
-  fun! s:StripTrailingWhitespace()
-    " Only strip if the b:noStripeWhitespace variable isn't set
-    if exists('b:noStripWhitespace')
-      return
-    endif
-    :FixWhitespace
-  endfun
-'''
-
-# [[plugins]]
-# repo = 'chrisbra/Colorizer'
-# hook_add = '''
-#   autocmd BufNewFile,BufRead *.css,*.scss,*.html,*.htm  :ColorHighlight!
-# '''
 
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
@@ -102,28 +78,3 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
-
-# ale ----------------------------------------------
-[[plugins]]
-repo = 'w0rp/ale'
-on_ft = ['javascript', 'go', 'python', 'swift', 'typescript']
-hook_add = '''
-let g:ale_swift_swiftlint_executable = 'swiftlint'
-  let g:ale_swift_swiftlint_options = ''
-  let g:syntastic_python_checker_args='--ignore=E501'
-
-  let g:ale_linters = {
-        \   'javascript': ['eslint'],
-        \   'cpp': ['g++'],
-        \   'go': ['gofmt'],
-        \   'python': ['flake8'],
-        \   'swift': ['swiftlint'],
-        \   'typescript': ['tslint'],
-        \}
-  let g:ale_fixers = {
-        \   'javascript': ['eslint'],
-        \   'python': ['yapf'],
-        \   'go': ['gofmt'],
-        \}
-  let g:ale_fix_on_save = 1
-'''

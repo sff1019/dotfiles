@@ -3,49 +3,13 @@
 repo = 'sff1019/vim-brogrammer-theme'
 
 [[plugins]]
-repo = 'nielsmadan/harlequin'
-
-[[plugins]]
-repo = 'ajh17/Spacegray.vim'
-
-[[plugins]]
-repo = 'whatyouhide/vim-gotham'
-
-[[plugins]]
-repo = 'fenetikm/falcon'
-
-[[plugins]]
 repo = 'sff1019/vim-joker'
-
-[[plugins]]
-repo = 'sjl/badwolf'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
-repo = 'mhartington/oceanic-next'
-
-[[plugins]]
 repo = 'tlhr/anderson.vim'
 
 [[plugins]]
-repo = 'srcery-colors/srcery-vim'
-
-[[plugins]]
-repo = 'altercation/vim-colors-solarized'
-
-[[plugins]]
-repo = 'sff1019/nord-vim'
-
-[[plugins]]
-repo = 'a/vim-trash-polka'
-
-[[plugins]]
 repo = 'raphamorim/lucario'
-
-[[plugins]]
-repo = 'rhysd/vim-color-spring-night'
-
-[[plugins]]
-repo = 'morhetz/gruvbox'

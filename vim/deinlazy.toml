@@ -43,11 +43,13 @@ call defx#custom#column('git', 'indicators', {
 repo = 'Shougo/defx.nvim'
 depends = ['defx-icons', 'defx-git']
 hook_add = '''
+  let g:defx_icons_column_length = 2
   map <silent> <C-\>
     \ :Defx -toggle -split=vertical
     \ -winwidth=30 -direction=topleft -resume<CR>
 '''
 hook_source = '''
+call defx#custom#column('git', 'column_length', 2)
 call defx#custom#option('_', {
       \ 'columns': 'indent:git:icons:filename:type',
       \ })
@@ -149,11 +151,6 @@ on_ft = ['javascript', 'typescript']
 hook_add = '''
   let g:vim_jsx_pretty_colorful_config = 1
 '''
-
-# highlight cpp
-[[plugins]]
-repo = 'octol/vim-cpp-enhanced-highlight'
-on_ft = ['cpp']
 
 # xterm color table ----------------------------------------
 [[plugins]]
