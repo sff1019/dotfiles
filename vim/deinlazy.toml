@@ -197,6 +197,12 @@ hook_source = '''
   let g:vimtex_view_general_options = '@line @pdf @tex'
 '''
 
+# Matlab
+[[plugins]]
+repo = 'daeyun/vim-matlab'
+on_ft = ['mat']
+hook_post_update = "function('DoRemote')"
+
 # unite colorscheme ----------------------------------------
 [[plugins]]
 repo = 'Shougo/unite.vim'
